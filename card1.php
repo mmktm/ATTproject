@@ -64,7 +64,7 @@ if (isset($_POST)) {
 		$result_faverite = mysqli_query($link,$sql_faverite);
 		$result_share = mysqli_query($link,$sql_share);
 		
-		  
+		
     
 
 
