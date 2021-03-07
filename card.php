@@ -1,0 +1,100 @@
+<?php
+include 'connect.php';
+
+if (isset($_POST)) {//echo "Welcome ";
+	// if ($_GET['ADD'] == 'true') {//echo "ADD ";
+		
+		//ตัวแปรรับค่าการค้นหาบทความ Search_content(S_ct)
+		$title = $_POST['title'];
+		echo $title ;
+
+		$sql_title = "	SELECT Text_NameContent FROM content
+						WHERE ID_Content = '{$title}' " ;
+
+		$sql_datect = "	SELECT Date_Content FROM content
+						WHERE ID_Content = '{$title}' " ;
+
+		$sql_image = "	SELECT Images01,Images02,Images03,Images04,Images05,Images06,Images07,Images08,Images09,Images10 FROM content
+						WHERE ID_Content = '{$title}' " ;
+
+		$sql_idauthor = "	SELECT ID_User FROM post
+							WHERE ID_Content = '{$title}' and Status_Post='Post' " ;
+
+		$sql_nameauthor = "	SELECT content.Text_NameContent,`user`.Username AS author 
+							FROM ((content INNER JOIN post ON content.ID_Content = post.ID_Content)
+							INNER JOIN `user` ON post.ID_User= `user`.ID_User)
+							WHERE content.ID_Content = '{$title}' " ;
+
+		$sql_idcate = " SELECT ID_Category FROM con_in_cate
+						WHERE ID_Content = '{$title}' " ;
+
+		$sql_namecate = "	SELECT content.ID_Content,content.Text_NameContent,category.Name_Category
+							FROM ((content INNER JOIN con_in_cate ON content.ID_Content = con_in_cate.ID_Content)
+							INNER JOIN category ON con_in_cate.ID_Category = category.ID_Category)
+							WHERE content.ID_Content = '{$title}' " ;
+
+		$sql_faverite = "	SELECT ID_Content,COUNT(ID_User)as fav FROM faverite
+							WHERE Status_Fav = '1' AND ID_Content = '{$title}'
+							GROUP BY ID_Content" ;
+
+		$sql_share = "	SELECT ID_Content,COUNT(ID_User) FROM `share`
+						WHERE ID_Content = '{$title}' , Status_Share = '1'
+						GROUP BY ID_Content " ;
+
+					
+		$result_title = mysqli_query($link, $sql_title);
+		$result_datect = mysqli_query($link, $sql_datect);
+		$result_image = mysqli_query($link, $sql_image);
+		$result_idauthor = mysqli_query($link, $sql_idauthor);
+		$result_nameauthor = mysqli_query($link,$sql_nameauthor);
+		$result_idcate = mysqli_query($link,$sql_idcate);
+		$result_namecate = mysqli_query($link,$sql_namecate);
+		$result_faverite = mysqli_query($link,$sql_faverite);
+		$result_share = mysqli_query($link,$sql_share);
+	
+		// if ($result_title & $result_datect ) {
+		// 	while($row=mysqli_fetch_assoc($result_title))
+		// 			{ $output[] = $row ; }
+
+		// 	//ดูข้อมูลที่queryมา
+		// 	echo json_encode($output) ;
+		// 	echo "\n" ;
+			
+		// 	while($row=mysqli_fetch_assoc($result_datect))
+		// 		{$output1[]=$row;}
+
+		// 	//ดูข้อมูลที่queryมา
+		// 	echo json_encode($output1) ;
+		// 	echo "\n" ;
+		
+		// if($result_faverite){
+		// 	while ($row = mysqli_fetch_assoc($result_faverite))
+		// 				{$output1[]=$row;}
+
+		// 	//ดูข้อมูลที่queryมา
+		// 	echo json_encode($output1) ;
+		// 	echo "\n" ;
+		
+
+		// } else {
+		// 	echo "false";
+		// }
+		if($result_namecate){
+			while ($row = mysqli_fetch_assoc($result_namecate))
+						{$output1[]=$row;}
+
+			//ดูข้อมูลที่queryมา
+			echo json_encode($output1) ;
+			echo "\n" ;
+		
+
+		} else {
+			echo "false";
+		}
+
+	} 
+	// else echo "Welcome ";
+   
+// }
+	mysqli_close($link);
+?>
