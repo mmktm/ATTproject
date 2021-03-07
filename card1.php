@@ -64,7 +64,10 @@ if (isset($_POST)) {
 		$result_share = mysqli_query($link,$sql_share);
 		header('Content-type: application/json');
 
+
+
 		
+
 		//ดูข้อมูลที่queryมา
 		if($result_namecate){
 			while ($row = mysqli_fetch_assoc($result_namecate))
