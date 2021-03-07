@@ -1,6 +1,7 @@
 
 <?php
 header("content-type:text/javascript;charset=utf-8");
+header('Content-type: application/json'); //ใช้ข้อมูลแบบ json
 include 'connectlc.php'; //เชื่อมต่อDATABASE
 
 
@@ -62,9 +63,9 @@ if (isset($_POST)) {
 		$result_namecate = mysqli_query($link,$sql_namecate);
 		$result_faverite = mysqli_query($link,$sql_faverite);
 		$result_share = mysqli_query($link,$sql_share);
-		header('Content-type: application/json');
-        asfdfkj
-
+		
+		  
+    
 
 
 		//ดูข้อมูลที่queryมา
