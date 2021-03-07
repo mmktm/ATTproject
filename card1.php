@@ -2,7 +2,7 @@
 <?php
 header("content-type:text/javascript;charset=utf-8");
 header('Content-type: application/json'); //ใช้ข้อมูลแบบ json
-include 'connectlc.php'; //เชื่อมต่อDATABASE
+include 'connect.php'; //เชื่อมต่อDATABASE
 
 
 if (isset($_POST)) {
@@ -65,6 +65,7 @@ if (isset($_POST)) {
 		$result_share = mysqli_query($link,$sql_share);
 		
 		
+
     
 
 
