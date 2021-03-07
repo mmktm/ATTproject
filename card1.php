@@ -63,10 +63,9 @@ if (isset($_POST)) {
 		$result_faverite = mysqli_query($link,$sql_faverite);
 		$result_share = mysqli_query($link,$sql_share);
 		header('Content-type: application/json');
+        asfdfkj
 
 
-
-		
 
 		//ดูข้อมูลที่queryมา
 		if($result_namecate){
