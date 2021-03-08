@@ -1,12 +1,14 @@
 
 <?php
-header("content-type:text/javascript;charset=utf-8");
+header("content-type:text/javascript;charset=utf-8"); //ภาษาไทย
 header('Content-type: application/json'); //ใช้ข้อมูลแบบ json
 include 'connect.php'; //เชื่อมต่อDATABASE
 
 
 if (isset($_POST)) {
-		
+	
+	header('Content-type: application/json');
+	
 		//ตัวแปรรับค่าการค้นหาบทความ Search_content(S_ct)
 		$title = $_POST['title'];
 		//echo $title ;
@@ -27,8 +29,8 @@ if (isset($_POST)) {
 		$sql_idauthor = "	SELECT ID_User FROM post
 							WHERE ID_Content = '{$title}' and Status_Post='Post' " ;
 
-		//แสดงชื่อบทความและชื่อผู้เขียน
-		$sql_nameauthor = "	SELECT content.Text_NameContent,`user`.Username AS author 
+		//แสดงชื่อผู้เขียน
+		$sql_nameauthor = "	SELECT `user`.Username AS author 
 							FROM ((content INNER JOIN post ON content.ID_Content = post.ID_Content)
 							INNER JOIN `user` ON post.ID_User= `user`.ID_User)
 							WHERE content.ID_Content = '{$title}' " ;
@@ -37,20 +39,20 @@ if (isset($_POST)) {
 		$sql_idcate = " SELECT ID_Category FROM con_in_cate
 						WHERE ID_Content = '{$title}' " ;
 
-		//แสดงรูปภาพของบทความ
-		$sql_namecate = "	SELECT content.ID_Content,content.Text_NameContent,category.Name_Category
+		//แสดงname_category
+		$sql_namecate = "	SELECT category.Name_Category
 							FROM ((content INNER JOIN con_in_cate ON content.ID_Content = con_in_cate.ID_Content)
 							INNER JOIN category ON con_in_cate.ID_Category = category.ID_Category)
 							WHERE content.ID_Content = '{$title}' " ;
 
-		//แสดงไอดีและยอดถูกใจบทความ
-		$sql_faverite = "	SELECT ID_Content,COUNT(ID_User)as fav FROM faverite
+		//แสดงยอดถูกใจบทความ
+		$sql_favorite = "	SELECT COUNT(ID_User)as fav FROM faverite
 							WHERE Status_Fav = '1' AND ID_Content = '{$title}'
 							GROUP BY ID_Content" ;
 
-		//แสดงไอดีและยอดแชร์ของบทความ
-		$sql_share = "	SELECT ID_Content,COUNT(ID_User) FROM `share`
-						WHERE ID_Content = '{$title}' , Status_Share = '1'
+		//แสดงยอดแชร์ของบทความ
+		$sql_share = "	SELECT COUNT(ID_User) FROM `share`
+						WHERE  Status_Share = '1' AND ID_Content = '{$title}'
 						GROUP BY ID_Content " ;
 
 		//เก็บค่าข้อมูลที่ได้ไว้ในตัวแปร result_			
@@ -61,23 +63,62 @@ if (isset($_POST)) {
 		$result_nameauthor = mysqli_query($link,$sql_nameauthor);
 		$result_idcate = mysqli_query($link,$sql_idcate);
 		$result_namecate = mysqli_query($link,$sql_namecate);
-		$result_faverite = mysqli_query($link,$sql_faverite);
+		$result_favorite = mysqli_query($link,$sql_favorite);
 		$result_share = mysqli_query($link,$sql_share);
 		
-		
+		//เก็บตัวแปรเป็นแถวในarray
+		$row_title = mysqli_fetch_assoc($result_title);
+		$row_datect = mysqli_fetch_assoc($result_datect);
+		$row_image = mysqli_fetch_assoc($result_image);
+		$row_idauthor = mysqli_fetch_assoc($result_idauthor);
+		$row_nameauthor = mysqli_fetch_assoc($result_nameauthor);
+		$row_idcate = mysqli_fetch_assoc($result_idcate);
+		$row_namecate = mysqli_fetch_assoc($result_namecate);
+		$row_favorite = mysqli_fetch_assoc($result_favorite);
+		$row_share = mysqli_fetch_assoc($result_share);
 
-    
+		//ตัวแปรที่แสดงข้อมูล
+		$output_title[] = $row_title ;
+		$output_datect[] = $row_datect ;
+		$output_image[] = $row_image ;
+		$output_idauthor[] = $row_idauthor ;
+		$output_nameauthor[] = $row_nameauthor ;
+		$output_idcate[] = $row_idcate ;
+		$output_namecate[] = $row_namecate ;
+		$output_favorite[] = $row_favorite ;
+		$output_share[] = $row_share ;
+
+		//เก็บข้อมูลรูปแบบ json_encode
+		$j_title = json_encode($output_title);
+		$j_datect = json_encode($output_datect);
+		$j_image = json_encode($output_image);
+		$j_idauthor = json_encode($output_idauthor);
+		$j_nameauthor = json_encode($output_nameauthor);
+		$j_idcate = json_encode($output_idcate);
+		$j_namecate = json_encode($output_namecate);
+		$j_favorite = json_encode($output_favorite);
+		$j_share = json_encode($output_share);
 
 
-		//ดูข้อมูลที่queryมา
-		if($result_namecate){
-			while ($row = mysqli_fetch_assoc($result_namecate))
-						{$output1[]=$row;}
-			echo json_encode(array( "code" => 200, "data" => $output1)) ;
-			echo "\n" ;
-		} else {
-			echo "false";
-		}
+		echo $j_title ;
+		echo $j_datect ;
+		echo $j_image ;
+		echo $j_idauthor ;
+		echo $j_nameauthor ;
+		echo $j_idcate ;
+		echo $j_namecate ;
+		echo $j_favorite ;
+		echo $j_share ;
+
+		// //ดูข้อมูลที่queryมา
+		// if($result_namecate){
+		// 	while ($row = mysqli_fetch_assoc($result_namecate))
+		// 				{$output1[]=$row;}
+		// 	echo json_encode(array( "code" => 200, "data" => $output1)) ;
+		// 	echo "\n" ;
+		// } else {
+		// 	echo "false";
+		// }
 
 	} 
 	// else echo "Welcome ";
