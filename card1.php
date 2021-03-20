@@ -2,14 +2,14 @@
 <?php
 header("content-type:text/javascript;charset=utf-8"); //ภาษาไทย
 header('Content-type: application/json'); //ใช้ข้อมูลแบบ json
-include 'connect.php'; //เชื่อมต่อDATABASE
+include 'connect.php'; //เชื่อมต่อDATABASE cloud
 
 
 if (isset($_POST)) {
 	
 	header('Content-type: application/json');
 	
-		//ตัวแปรรับค่าการค้นหาบทความ Search_content(S_ct)
+		//ตัวแปรรับค่าว่าจะเลือกแสดงบทความไหน
 		$title = $_POST['title'];
 		//echo $title ;
 

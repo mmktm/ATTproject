@@ -1,7 +1,7 @@
 <?php
 header("content-type:text/javascript;charset=utf-8"); //ภาษาไทย
 header('Content-type: application/json'); //ใช้ข้อมูลแบบ json
-include 'connectlc.php'; //เชื่อมต่อDATABASE
+include 'connectlc.php'; //เชื่อมต่อDATABASE local
 
 if (isset($_POST)) {//echo "Welcome ";
 	// if ($_GET['ADD'] == 'true') {//echo "ADD ";

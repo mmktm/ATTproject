@@ -11,6 +11,7 @@ $table_database = 'att-review';
 
 $link = mysqli_connect( $host , $username , $pass , $table_database );
 // $link = mysqli_connect('localhost', 'root', '1234', "att-review");
+// mysqli_query($link, "SET NAMES 'utf8' ");
 mysqli_set_charset($link,"utf-8");
 
 
