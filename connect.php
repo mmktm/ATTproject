@@ -5,7 +5,7 @@ error_reporting(E_ERROR | E_PARSE);
 // conect to mysql
 $host = '35.240.165.55';
 $username = 'root' ;
-$pass = 'root1628';
+$pass = '1628';
 $table_database = 'pj-att';
 
 $link = mysqli_connect( $host , $username , $pass , $table_database );
