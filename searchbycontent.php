@@ -10,7 +10,7 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
 		$searchbycontent = $_GET['searchbycotent'];
         
         $sql_searchbycontent = " SELECT Text_NameContent FROM content
-                                 WHERE Text_NameContent LIKE '{$searchbycontent}' " ;
+                                 WHERE Text_NameContent LIKE '%{$searchbycontent}%' " ;
 
         $result_searchbycontent = mysqli_query($link,$sql_searchbycontent);
         $row_searchbycontent = mysqli_fetch_assoc($result_searchbycontent);
