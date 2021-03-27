@@ -2,7 +2,7 @@
 header("content-type:text/javascript;charset=utf-8");
 error_reporting(0);
 error_reporting(E_ERROR | E_PARSE);
-// conect to mysql
+// connect to mysql
 $host = '35.240.165.55';
 $username = 'root' ;
 $pass = 'root1628';
