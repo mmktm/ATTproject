@@ -3,7 +3,7 @@ header("content-type:text/javascript;charset=utf-8"); //ภาษาไทย
 header('Content-type: application/json'); //ใช้ข้อมูลแบบ json
 include 'connect.php'; //เชื่อมต่อDATABASE cloud
 
-    //ถ้ามีตัวแปร allranking เข้ามาและ ไม่ใช่ค่าว่าง
+    //ถ้ามีการกดตัวแปร allranking เข้ามา
     if(isset($_GET['allranking'])) {
         header('Content-type: application/json');
 
@@ -41,12 +41,10 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
                                     LEFT JOIN category cate1 ON con_in_cate.ID_Category1 = cate1.ID_Category)
                                     LEFT JOIN category cate2 ON con_in_cate.ID_Category2 = cate2.ID_Category 
                                 WHERE
-                                    -- ( con_in_cate.ID_Category0 = $allranking 
-                                    -- OR con_in_cate.ID_Category1 = $allranking 
-                                    -- OR con_in_cate.ID_Category2 = $allranking )
                                      content.Status_Content = 'Post'
                                 ORDER BY
-	                                content.Counter_Read DESC    " ;
+	                                content.Counter_Read DESC   
+                                    LIMIT 10 " ;
 
         $result_allranking = $link->query($sql_allranking);
         if($result_allranking->num_rows <=0 ){

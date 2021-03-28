@@ -3,7 +3,7 @@ header("content-type:text/javascript;charset=utf-8"); //ภาษาไทย
 header('Content-type: application/json'); //ใช้ข้อมูลแบบ json
 include 'connect.php'; //เชื่อมต่อDATABASE cloud
 
-    //ถ้ามีตัวแปร searchbycategory เข้ามาและ ไม่ใช่ค่าว่าง
+    //ถ้ามีตัวแปร searchbycategory รับค่า ID_category เข้ามาและ ไม่ใช่ค่าว่าง
     if(isset($_GET['searchbycategory']) && $_GET['searchbycategory'] != ''){
         header('Content-type: application/json');
 

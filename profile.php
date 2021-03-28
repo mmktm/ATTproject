@@ -3,14 +3,14 @@ header("content-type:text/javascript;charset=utf-8"); //ภาษาไทย
 header('Content-type: application/json'); //ใช้ข้อมูลแบบ json
 include 'connect.php'; //เชื่อมต่อDATABASE cloud
 
-    //ถ้ามีตัวแปร profile เข้ามาและ ไม่ใช่ค่าว่าง
+    //ถ้ามีตัวแปร profile รับค่า ID_User เข้ามาและ ไม่ใช่ค่าว่าง
     if(isset($_GET['profile']) && $_GET['profile'] != ''){
 
         header('Content-type: application/json');
-        //เก็บค่า proflie
+        //รับค่า ID_User
 		$profile = $_GET['profile'];
         
-        //ID_User,Date_User,Username,Status_User,Image,followers
+        //show : ID_User,Date_User,Username,Status_User,Image,followers
         $sql_profile = " SELECT
                             user.ID_User,
                             user.Date_User,

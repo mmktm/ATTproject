@@ -3,7 +3,7 @@ header("content-type:text/javascript;charset=utf-8"); //ภาษาไทย
 header('Content-type: application/json'); //ใช้ข้อมูลแบบ json
 include 'connect.php'; //เชื่อมต่อDATABASE cloud
 
-    //ถ้ามีตัวแปร searchbycontent เข้ามาและ ไม่ใช่ค่าว่าง
+    //ถ้ามีตัวแปร searchbycontent รับค่า คำค้นหา เข้ามาและ ไม่ใช่ค่าว่าง
     if(isset($_GET['searchbycontent']) && $_GET['searchbycontent'] != ''){
 
         header('Content-type: application/json');
@@ -16,7 +16,7 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
 
         $result_searchbycontent = $link->query($sql_searchbycontent);
         if($result_searchbycontent->num_rows <=0 ){
-            echo "ไม่พบบทความเกี่ยวกับ $searchbycontent น้า" ;
+            echo "ไม่พบบทความชื่อ $searchbycontent น้า" ;
         } else {
             while ($row_searchbycontent = $result_searchbycontent->fetch_assoc()){
                 $output_searchbycontent[] = $row_searchbycontent ;

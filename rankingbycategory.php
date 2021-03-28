@@ -3,7 +3,7 @@ header("content-type:text/javascript;charset=utf-8"); //ภาษาไทย
 header('Content-type: application/json'); //ใช้ข้อมูลแบบ json
 include 'connect.php'; //เชื่อมต่อDATABASE cloud
 
-    //ถ้ามีตัวแปร rankbycategory เข้ามาและ ไม่ใช่ค่าว่าง
+    //ถ้ามีตัวแปร rankbycategory รับค่า ID_category เข้ามาและ ไม่ใช่ค่าว่าง
     if(isset($_GET['rankbycategory']) && $_GET['rankbycategory'] != ''){
         header('Content-type: application/json');
 
@@ -46,7 +46,8 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
                                     OR con_in_cate.ID_Category2 = $rankbycategory )
                                     AND Status_Content = 'Post'
                                 ORDER BY
-	                                content.Counter_Read DESC    " ;
+	                                content.Counter_Read DESC  
+                                    LIMIT 10   " ;
 
         $result_rankbycategory = $link->query($sql_rankbycategory);
         if($result_rankbycategory->num_rows <=0 ){
