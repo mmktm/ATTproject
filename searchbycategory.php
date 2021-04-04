@@ -32,14 +32,14 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
                                     con_in_cate.ID_Category1,
                                     con_in_cate.ID_Category2,
                                     con_in_cate.ID_Category3,
-                                    cate0.Name_Category AS Cate0,
-                                    cate1.Name_Category AS Cate1,
-                                    cate2.Name_Category AS Cate2
+                                    cate0.Name_Category AS Cate1,
+                                    cate1.Name_Category AS Cate2,
+                                    cate2.Name_Category AS Cate3
                                 FROM
                                     (((content INNER JOIN con_in_cate ON content.ID_Content = con_in_cate.ID_Content )
-                                    left JOIN category cate1 ON con_in_cate.ID_Category1 = cate0.ID_Category )
-                                    left JOIN category cate2 ON con_in_cate.ID_Category2 = cate1.ID_Category)
-                                    left JOIN category cate3 ON con_in_cate.ID_Category3 = cate2.ID_Category 
+                                    left JOIN category cate1 ON con_in_cate.ID_Category1 = cate1.ID_Category )
+                                    left JOIN category cate2 ON con_in_cate.ID_Category2 = cate2.ID_Category)
+                                    left JOIN category cate3 ON con_in_cate.ID_Category3 = cate3.ID_Category 
                                 WHERE
                                    ( con_in_cate.ID_Category1 = $searchbycategory 
                                     OR con_in_cate.ID_Category2 = $searchbycategory 
