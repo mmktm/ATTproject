@@ -45,18 +45,25 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
                                     OR con_in_cate.ID_Category1 = $searchbycategory 
                                     OR con_in_cate.ID_Category2 = $searchbycategory ) 
                                     AND Status_Content = 'Post' " ;
-                                    
-        $result_searchbycategory = $link->query($sql_searchbycategory);
-        if($result_searchbycategory->num_rows <=0 ){
-            echo "ไม่พบบทความเกี่ยวกับ ID_Category : $searchbycategory น้า" ;
-        } else {
-            while ($row_searchbycategory = $result_searchbycategory->fetch_assoc()){
-                $output_searchbycategory[] = $row_searchbycategory ;
-                $j_searchbycategory = json_encode($output_searchbycategory);
-            }
-            echo "$j_searchbycategory\n" ;
-        }
 
-        }
-        mysqli_close($link);
-?>       
+        
+        $result_searchbycategory = $link->query($sql_searchbycategory);
+                $NameContents = [];
+                
+                if($result_searchbycategory->num_rows <=0 ){
+                    echo "ไม่พบบทความเกี่ยวกับ ID_Category : $searchbycategory น้า" ;
+                } else {
+                    $results_all = $result_searchbycategory->fetch_all(MYSQLI_ASSOC);
+
+                    foreach($results_all as $result){
+                        $NameContents[] = [
+                        'Text_NameContent'=> $result['Text_NameContent']
+                        ];
+                    }
+                    
+                    echo json_encode($NameContents);
+                }
+
+            }
+            mysqli_close($link);
+?>

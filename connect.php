@@ -25,6 +25,6 @@ if (!$link->set_charset("utf8")) {
     exit();
 	}
 
-echo "Connect to Cloud Successfully \n";
+//echo "Connect to Cloud Successfully \n";
 
 ?>

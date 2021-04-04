@@ -28,6 +28,6 @@ if (!$link->set_charset("utf8")) {
     exit();
 	}
 
-echo "Connect to Localhost Successfully \n";
+#echo "Connect to Localhost Successfully \n";
 
 ?>
