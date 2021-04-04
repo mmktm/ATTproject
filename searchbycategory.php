@@ -32,9 +32,9 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
                                     con_in_cate.ID_Category1,
                                     con_in_cate.ID_Category2,
                                     con_in_cate.ID_Category3,
-                                    cate0.Name_Category AS Cate1,
-                                    cate1.Name_Category AS Cate2,
-                                    cate2.Name_Category AS Cate3
+                                    cate1.Name_Category AS Cate1,
+                                    cate2.Name_Category AS Cate2,
+                                    cate3.Name_Category AS Cate3
                                 FROM
                                     (((content INNER JOIN con_in_cate ON content.ID_Content = con_in_cate.ID_Content )
                                     left JOIN category cate1 ON con_in_cate.ID_Category1 = cate1.ID_Category )
