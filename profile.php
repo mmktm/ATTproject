@@ -33,9 +33,11 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
                 while ($row_profile = $result_profile->fetch_assoc()){
                     $output_profile[] = $row_profile ;
                     $j_profile = json_encode($output_profile);
+                   
                     
                 }
                 echo "$j_profile\n" ;
+                
             }
         
         //following

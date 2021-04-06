@@ -4,11 +4,10 @@ header('Content-type: application/json'); //ใช้ข้อมูลแบบ
 include 'connect.php'; //เชื่อมต่อDATABASE cloud
 
     //กดปุ่ม Post รับค่า ID_User เข้ามา
-    if(isset($_POST['ID_Userpost']) && $_POST['ID_Userpost'] != '') {
+    if(isset($_POST['content']) && $_POST['postcontent'] != '') {
         header('Content-type: application/json'); //แสดงแบบ json
         
-        $Status_Content = 'Post'; //status
-        $ID_Userpost = $_POST['ID_Userpost']; //iduser
+        $ID_Userpost = $_POST['postcontent']; //iduser
         $Text_nct = $_POST['Text_nct']; //namecontent
         $Text_ct = $_POST['Text_ct'];//text
         $Link_VDO = $_POST['Link_VDO'];//link vdo
@@ -19,11 +18,14 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
         //images
         // echo " $ID_Userpost \n " ;
 
-        //input content
-        $sql_content = " INSERT INTO content
-                          (Status_Content, Text_NameContent, Text_Content, Link_VDO, Link_Map)
-                         VALUES
-                          ('$Status_Content', '$Text_nct', '$Text_ct', '$Link_VDO', '$Link_Map' ) " ;
+        //content update
+        $sql_ctupdate = " UPDATE content
+                            SET 
+                                Text_NameContent = '$Text_nct',
+                                Text_Content = '$Text_ct',
+                                Link_VDO = '$Link_VDO',
+                                Link_Map = '$Link_Map'
+                         WHERE content.ID_content =  && content.Status_Content = 'Post' " ;
 
             $result_content = $link->query($sql_content);
             // var_dump($result_content);
@@ -32,16 +34,15 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
                 else{
                     echo "errorrrrrr ".mysqli_error($link)."\n" ;
                 }
-        
-        //insert category to con_in_cate
+
         //select idcontent ที่พึ่งเพิ่ม
         $sql_idcontent = " SELECT
                                 ID_Content
                             FROM
                                 content
                             WHERE
-                                -- Text_NameContent = '$Text_nct' && Status_Content = 'Post'
-                                Text_NameContent = 'เที่ยวแดนเหนือ'
+                                Text_NameContent = '$Text_nct'
+                                -- Text_NameContent = 'เที่ยวแดนเหนือ'
                             ORDER BY
                                 ID_Content DESC 
                                 LIMIT 1" ;
@@ -55,48 +56,21 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
 
                         //insert category to con_in_cate
                         $sql_con_in_cate = " INSERT INTO con_in_cate
-                                                (ID_Content , ID_Category1 , ID_Category2 , ID_Category3 )
+                                            (ID_Content , ID_Category1 , ID_Category2 , ID_Category3 )
                                             VALUES
-                                                ('$idcontent' , '$ID_Category1', '$ID_Category2', '$ID_Category3') "; 
+                                            ('$idcontent' , '$ID_Category1', '$ID_Category2', '$ID_Category3') "; 
                     #echo $sql_con_in_cate;
                     $result_con_in_cate = $link->query($sql_con_in_cate);
-                    // echo "result_con_in_cate is ".json_encode($result_con_in_cate);
+                    echo "result_con_in_cate is ".json_encode($result_con_in_cate);
                 } else {
                     echo "result_idcontent is false ".mysqli_error($link)."\n" ;
                 }
 
-        //insert data to post
-        //select date_content
-        $sql_datepost = " SELECT
-                            Date_Content 
-                          FROM
-                            content 
-                          WHERE
-                            ID_Content = '$idcontent' && Status_Content = 'Post' " ;
-
-            $result_datepost = $link->query($sql_datepost);
-                if($result_datepost){
-                    $row_datepost = $result_datepost->fetch_assoc();
-                    $datepost = $row_datepost['Date_Content'];
-                    // echo $datepost;
-
-                    //insert data to post
-                    $sql_post = "INSERT INTO post
-                                    ( ID_User, ID_Content, Status_Post, Date_Post )
-                                 VALUES
-                                    ('$ID_Userpost','$idcontent','$Status_Content','$datepost')" ;
-                        $result_post = $link->query($sql_post);
-                        // echo "\n result_post is ".json_encode($result_post);
-                } else {
-                    echo "result_datepost is false ".mysqli_error($link)."\n" ;
-                }
-
-       
         //เช็คว่าข้อมูลเข้าทั้งสองตารางแล้วใช่หรือไม่
-        // if($result_content && $result_con_in_cate){
-        //     echo "\n เพิ่ม $Text_nct เรียบร้อยแล้วจ้า \n";
-        // } else {
-        //     echo "\n false jaa u เขียนอะไรผิดรึเปล่า?".mysqli_error($link)."\n" ;
-        // }
+        if($result_content && $result_con_in_cate){
+            echo "\n เพิ่ม $Text_nct เรียบร้อยแล้วจ้า \n";
+        } else {
+            echo "\n false jaa u เขียนอะไรผิดรึเปล่า?".mysqli_error($link)."\n" ;
+        }
     }
     mysqli_close($link);
