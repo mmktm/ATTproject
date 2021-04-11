@@ -30,7 +30,7 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
                 if($result_content){
                     echo "result_content is true \n"; }
                 else{
-                    echo "errorrrrrr ".mysqli_error($link)."\n" ;
+                    echo "result_content is false ".mysqli_error($link)."\n" ;
                 }
         
         //insert category to con_in_cate
@@ -40,8 +40,8 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
                             FROM
                                 content
                             WHERE
-                                -- Text_NameContent = '$Text_nct' && Status_Content = 'Post'
-                                Text_NameContent = 'เที่ยวแดนเหนือ'
+                                Text_NameContent = '$Text_nct' && Status_Content = 'Post'
+                                -- Text_NameContent = 'เที่ยวแดนเหนือ'
                             ORDER BY
                                 ID_Content DESC 
                                 LIMIT 1" ;
@@ -65,7 +65,7 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
                     echo "result_idcontent is false ".mysqli_error($link)."\n" ;
                 }
 
-        //insert data to post
+        //insert data to table post
         //select date_content
         $sql_datepost = " SELECT
                             Date_Content 
@@ -90,13 +90,6 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
                 } else {
                     echo "result_datepost is false ".mysqli_error($link)."\n" ;
                 }
-
-       
-        //เช็คว่าข้อมูลเข้าทั้งสองตารางแล้วใช่หรือไม่
-        // if($result_content && $result_con_in_cate){
-        //     echo "\n เพิ่ม $Text_nct เรียบร้อยแล้วจ้า \n";
-        // } else {
-        //     echo "\n false jaa u เขียนอะไรผิดรึเปล่า?".mysqli_error($link)."\n" ;
-        // }
     }
     mysqli_close($link);
+    ?>

@@ -33,11 +33,8 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
                 while ($row_profile = $result_profile->fetch_assoc()){
                     $output_profile[] = $row_profile ;
                     $j_profile = json_encode($output_profile);
-                   
-                    
                 }
                 echo "$j_profile\n" ;
-                
             }
         
         //following
@@ -56,7 +53,6 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
                 while ($row_following = $result_following->fetch_assoc()){
                     $output_following[] = $row_following ;
                     $j_following = json_encode($output_following);
-                    
                 }
                 echo "$j_following\n" ;
             }
@@ -68,7 +64,7 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
                                 post 
                                 JOIN content ON post.ID_Content = content.ID_Content
                             WHERE
-                                post.ID_User = $profile " ;
+                                post.ID_User = $profile && content.Status_Content = 'Post' " ;
 
             $result_contentof = $link->query($sql_contentof);
             if($result_contentof->num_rows <=0 ){
@@ -82,6 +78,5 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
                 echo "$j_contentof\n" ;
             }
     }
-
     mysqli_close($link);
 ?>
