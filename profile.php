@@ -57,14 +57,16 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
                 echo "$j_following\n" ;
             }
 
-        //contentof
+        //contentof เรียงลำดับจากid บทความ ล่าสุด
         $sql_contentof = " SELECT
-                                * 
+                                *
                             FROM
                                 post 
                                 JOIN content ON post.ID_Content = content.ID_Content
                             WHERE
-                                post.ID_User = $profile && content.Status_Content = 'Post' " ;
+                                post.ID_User = $profile && content.Status_Content = 'Post'
+                            ORDER BY
+                                content.ID_Content DESC" ;
 
             $result_contentof = $link->query($sql_contentof);
             if($result_contentof->num_rows <=0 ){

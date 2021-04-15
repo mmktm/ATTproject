@@ -1,7 +1,7 @@
 <?php 
 header("content-type:text/javascript;charset=utf-8"); //ภาษาไทย
 header('Content-type: application/json'); //ใช้ข้อมูลแบบ json
-include 'connectlc.php'; //เชื่อมต่อDATABASE cloud
+include 'connect.php'; //เชื่อมต่อDATABASE cloud
     
     //ต้องรับมา 2 ค่า id-user and id-content
     //กดปุ่ม delete รับค่า ID_Content ที่ต้องการ delete 
@@ -26,18 +26,32 @@ include 'connectlc.php'; //เชื่อมต่อDATABASE cloud
 
              //ถ้า ID_User มีค่าตรงกัน 
             if($checkpost == $ID_User ){
-                //update Status_Post 
-                $sql_ctdelete = " UPDATE post 
+                //update Status_Post in post table
+                $sql_updatestp = " UPDATE post 
                                     SET Status_Post = 'Delete' 
                                     WHERE
                                         ID_Content = '$ID_Contentdl' " ;
 
-                    $result_ctdelete = $link->query($sql_ctdelete);
-                        if($result_ctdelete){
-                            echo "result_ctdelete is true \n"; }
+                    $result_updatestp = $link->query($sql_updatestp);
+                        if($result_updatestp){
+                            echo "result_updatestp is true \n"; }
                         else{
-                            echo "result_ctdelete is false ".mysqli_error($link)."\n" ;
+                            echo "result_updatestp is false ".mysqli_error($link)."\n" ;
                         }
+                
+                //update Status_Post in content table
+                $sql_updatestct =  " UPDATE content 
+                                        SET Status_Content = 'Delete' 
+                                        WHERE
+                                            ID_Content = '$ID_Contentdl' " ;
+
+                    $result_updatestct = $link->query($sql_updatestct);
+                        if($result_updatestct){
+                            echo "result_updatestct is true \n"; }
+                        else{
+                            echo "result_updatestct is false ".mysqli_error($link)."\n" ;
+                        }
+
             }else{
                 echo "จะไปลบบทความของผู้อื่นไม่ได้นะ" ;
             }

@@ -10,6 +10,7 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
         //ตัวแปรรับค่า ID_User
 		$myfavstore = $_GET['myfavstore'];
         
+        //iduser,username,statusfav,datefav,idcontent,datecontent,namecontent,image1,namecate
         $sql_myfavstore = " SELECT 
                                 `user`.ID_User,
                                 `user`.Username,
