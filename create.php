@@ -16,7 +16,7 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
         $ID_Category1 = $_POST['ID_Category1']; //category1
         $ID_Category2 = $_POST['ID_Category2'];//category2
         $ID_Category3 = $_POST['ID_Category3'];//category3
-        //images
+        //images รอเพิ่มรูป
         // echo " $ID_Userpost \n " ;
 
         //input content

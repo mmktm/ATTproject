@@ -3,7 +3,7 @@ header("content-type:text/javascript;charset=utf-8"); //ภาษาไทย
 header('Content-type: application/json'); //ใช้ข้อมูลแบบ json
 include 'connect.php'; //เชื่อมต่อDATABASE cloud
 
-    //กดปุ่ม home แสดงบทความทั้งหมดเรียงตามไอดีคอนเท้นล่าสุด
+    //กดปุ่ม home แสดงบทความทั้งหมด เรียงตามไอดีคอนเท้นล่าสุด
     if(isset($_GET['home'])){
         header('Content-type: application/json');
 
@@ -39,6 +39,7 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
                                         LEFT JOIN category cate3 ON con_in_cate.ID_Category3 = cate3.ID_Category )
                                         RIGHT JOIN post ON content.ID_Content = post.ID_Content )
                                         JOIN `user` ON post.ID_User = `user`.ID_User )
+                                        
                             WHERE
                                 post.Status_Post = 'Post' 
                             ORDER BY
