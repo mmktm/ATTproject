@@ -7,6 +7,7 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
     if(isset($_GET['followerlist']) && $_GET['followerlist'] != ''){
         header('Content-type: application/json');
 
+        //ผู้ที่กำลังติดตามเรา
         $iduser = $_GET['followerlist'] ;
 
         $sql_followerlist = " SELECT
@@ -33,6 +34,7 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
                 }
 }else { 
     
+    //เรากำลังติดตาม
     if(isset($_GET['followinglist']) && $_GET['followinglist'] != ''){
         header('Content-type: application/json');
 

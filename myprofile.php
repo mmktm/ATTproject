@@ -10,7 +10,7 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
         //รับค่า ID_User
 		$profile = $_GET['profile'];
         
-        //show : ID_User,Date_User,Username,Status_User,Image,followers
+        //show datauser : ID_User,Date_User,Username,Status_User,Image,followers
         $sql_profile = " SELECT
                             user.ID_User,
                             user.Date_User,
@@ -59,10 +59,37 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
 
         //contentof เรียงลำดับจากid บทความ ล่าสุด
         $sql_contentof = " SELECT
-                                *
+                                `user`.ID_User,
+                                `user`.Username,
+                                post.Status_Post,
+                                content.ID_Content,
+                                content.Date_Content,
+                                content.Text_NameContent,
+                                content.Text_Content,
+                                content.Link_VDO,
+                                content.Link_Map,
+                                content.Counter_Read,
+                                content.Images01,
+                                content.Images02,
+                                content.Images03,
+                                content.Images04,
+                                content.Images05,
+                                content.Images06,
+                                content.Images07,
+                                content.Images08,
+                                content.Images09,
+                                content.Images10,
+                                cate1.Name_Category AS Cate1,
+                                cate2.Name_Category AS Cate2,
+                                cate3.Name_Category AS Cate3 
                             FROM
-                                post 
-                                JOIN content ON post.ID_Content = content.ID_Content
+                                (((((( content
+                                    LEFT JOIN con_in_cate ON content.ID_Content = con_in_cate.ID_Content )
+                                    LEFT JOIN category cate1 ON con_in_cate.ID_Category1 = cate1.ID_Category )
+                                    LEFT JOIN category cate2 ON con_in_cate.ID_Category2 = cate2.ID_Category )
+                                    LEFT JOIN category cate3 ON con_in_cate.ID_Category3 = cate3.ID_Category )
+                                    RIGHT JOIN post ON content.ID_Content = post.ID_Content )
+                                    JOIN `user` ON post.ID_User = `user`.ID_User )
                             WHERE
                                 post.ID_User = $profile && content.Status_Content = 'Post'
                             ORDER BY

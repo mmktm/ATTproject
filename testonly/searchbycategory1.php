@@ -56,9 +56,7 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
                     $results_all = $result_searchbycategory->fetch_all(MYSQLI_ASSOC);
 
                     foreach($results_all as $result){
-                        $NameContents[] = [
-                        'Text_NameContent'=> $result['Text_NameContent']
-                        ];
+                        $NameContents[] = ['Text_NameContent'=> $result['Text_NameContent']];
                     }
                     
                     echo json_encode($NameContents);

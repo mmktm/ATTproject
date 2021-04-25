@@ -17,7 +17,7 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
         $ID_Category2 = $_POST['ID_Category2'];//category2
         $ID_Category3 = $_POST['ID_Category3'];//category3
         //images รอเพิ่มรูป
-        // echo " $ID_Userpost \n " ;
+        // echo " $ID_Userpost \n " ; //ดู iduserที่รับเข้ามา
 
         //input content
         $sql_content = " INSERT INTO content
@@ -33,8 +33,7 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
                     echo "result_content is false ".mysqli_error($link)."\n" ;
                 }
         
-        //insert category to con_in_cate
-        //select idcontent ที่พึ่งเพิ่ม
+        //select idcontent ที่พึ่งเพิ่ม -> insert category to con_in_cate
         $sql_idcontent = " SELECT
                                 ID_Content
                             FROM
@@ -65,8 +64,7 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
                     echo "result_idcontent is false ".mysqli_error($link)."\n" ;
                 }
 
-        //insert data to table post
-        //select date_content
+        //select date_content ->insert data to table post
         $sql_datepost = " SELECT
                             Date_Content 
                           FROM

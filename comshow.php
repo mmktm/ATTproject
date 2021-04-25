@@ -1,0 +1,38 @@
+<?php 
+header("content-type:text/javascript;charset=utf-8"); //ภาษาไทย
+header('Content-type: application/json'); //ใช้ข้อมูลแบบ json
+include 'connect.php'; //เชื่อมต่อDATABASE cloud
+
+//code show data comment ของ content นั้นๆ
+//ใช้คู่กับไฟล์แสดงข้อมูลของบทความ
+//รับค่า ID_Content ($_POST['ID_Content'])
+
+if(isset($_POST['ID_Content']) && $_POST['ID_Content'] != '' ){
+    header('Content-type: application/json');
+
+    $idcontentcomshow = $_POST['ID_Content'] ;
+
+    $sql_comshow = " SELECT 
+                        `comment`.ID_Comment,
+                        `user`.Username,
+                        `comment`.Text_Comment,
+                        `comment`.Date_Comment 
+                        FROM 
+                        `comment` JOIN `user` ON `comment`.ID_User = `user`.ID_User 
+                        WHERE `comment`.ID_Content = '$idcontentcomshow' && `comment`.Status_Comment = '1' " ;
+        
+        $result_comshow = $link->query($sql_comshow);
+        if($result_comshow->num_rows <=0 ){
+            echo "ไม่มีผู้ติดตาม" ;
+        } else {
+            while ($row_comshow = $result_comshow->fetch_assoc()){
+                $output_comshow[] = $row_comshow ;
+                $j_comshow = json_encode($output_comshow);
+            }
+            echo "$j_comshow\n" ;
+        }
+}
+
+mysqli_close($link);
+
+?>
