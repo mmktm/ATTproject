@@ -8,9 +8,11 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
 
 if(isset($_POST['ID_Content']) && $_POST['ID_Content'] != '' ){ 
 
+    $idcontentshare = $_POST['ID_Content'] ;
+
     $sql_shareshow = " SELECT COUNT(ID_User) AS share 
                         FROM share
-                        WHERE ID_Content = '$idcontentshare' && Status_share = '1'" ;
+                        WHERE ID_Content = '$idcontentshare' && Status_Share = '1'" ;
         
         $result_shareshow = $link->query($sql_shareshow);
             if($result_shareshow){

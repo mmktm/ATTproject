@@ -10,12 +10,12 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
         header('Content-type: application/json'); //แสดงแบบ json
         
         $ID_User = $_POST['ID_User']; //iduser
-        $ID_Contentedit = $_POST['ID_Contentedit']; //idcontent
-        $Text_nct = $_POST['Text_nct']; //namecontent
+        $ID_Contentedit = $_POST['ID_Contentedit'];//idcontent
+        $Text_nct = $_POST['Text_nct'];//namecontent
         $Text_ct = $_POST['Text_ct'];//text
         $Link_VDO = $_POST['Link_VDO'];//link vdo
         $Link_Map = $_POST['Link_Map'];//link map
-        $ID_Category1 = $_POST['ID_Category1']; //idcategory1
+        $ID_Category1 = $_POST['ID_Category1'];//idcategory1
         $ID_Category2 = $_POST['ID_Category2'];//idcategory2
         $ID_Category3 = $_POST['ID_Category3'];//idcategory3
         //images
