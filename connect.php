@@ -1,5 +1,7 @@
 <?php
 header("content-type:text/javascript;charset=utf-8");
+header('content-type: application/json');
+
 error_reporting(0);
 error_reporting(E_ERROR | E_PARSE);
 // connect to mysql

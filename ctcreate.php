@@ -1,18 +1,17 @@
 <?php 
 header("content-type:text/javascript;charset=utf-8"); //ภาษาไทย
-header('Content-type: application/json'); //ใช้ข้อมูลแบบ json
+header('content-type: application/json'); //ใช้ข้อมูลแบบ json
 include 'connect.php'; //เชื่อมต่อDATABASE cloud
 
     //กดปุ่ม Post รับค่า ID_User เข้ามา
     if(isset($_POST['ID_Userpost']) && $_POST['ID_Userpost'] != '') {
-        header('Content-type: application/json'); //แสดงแบบ json
         
         $Status_Content = 'Post'; //status
         $ID_Userpost = $_POST['ID_Userpost']; //iduser
-        $Text_nct = $_POST['Text_nct']; //namecontent
-        $Text_ct = $_POST['Text_ct'];//text
+        $Title = $_POST['Title']; //title
+        $Content = $_POST['Content'];//content
         $Link_VDO = $_POST['Link_VDO'];//link vdo
-        $Link_Map = $_POST['Link_Map'];//link map
+        $Location = $_POST['Location'];//link map
         $ID_Category1 = $_POST['ID_Category1']; //category1
         $ID_Category2 = $_POST['ID_Category2'];//category2
         $ID_Category3 = $_POST['ID_Category3'];//category3
@@ -21,9 +20,9 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
 
         //input content
         $sql_content = " INSERT INTO content
-                          (Status_Content, Text_NameContent, Text_Content, Link_VDO, Link_Map)
+                          (Status_Content, Title, Content, Link_VDO, Location)
                          VALUES
-                          ('$Status_Content', '$Text_nct', '$Text_ct', '$Link_VDO', '$Link_Map' ) " ;
+                          ('$Status_Content', '$Title', '$Content', '$Link_VDO', '$Location' ) " ;
 
             $result_content = $link->query($sql_content);
             // var_dump($result_content);
@@ -39,7 +38,7 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
                             FROM
                                 content
                             WHERE
-                                Text_NameContent = '$Text_nct' && Status_Content = 'Post'
+                                Title = '$Title' && Status_Content = 'Post'
                                 -- Text_NameContent = 'เที่ยวแดนเหนือ'
                             ORDER BY
                                 ID_Content DESC 

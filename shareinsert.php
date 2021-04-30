@@ -1,6 +1,6 @@
 <?php 
 header("content-type:text/javascript;charset=utf-8"); //ภาษาไทย
-header('Content-type: application/json'); //ใช้ข้อมูลแบบ json
+header('content-type: application/json'); //ใช้ข้อมูลแบบ json
 include 'connect.php'; //เชื่อมต่อDATABASE cloud
 
 //code share
@@ -13,7 +13,7 @@ if(isset($_POST['share']) && $_POST['share'] != '' ){
     $statusshare = '1';
 
     $sql_share = " INSERT INTO share( ID_User, ID_Content, Status_Share ) 
-                    VALUES ('$iduser','$idcontentshare','1')" ;
+                    VALUES ('$iduser','$idcontentshare','$statusshare')" ;
         
         $result_share = $link->query($sql_share);
 

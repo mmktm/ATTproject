@@ -1,11 +1,10 @@
 <?php 
 header("content-type:text/javascript;charset=utf-8"); //ภาษาไทย
-header('Content-type: application/json'); //ใช้ข้อมูลแบบ json
+header('content-type: application/json'); //ใช้ข้อมูลแบบ json
 include 'connect.php'; //เชื่อมต่อDATABASE cloud
 
     //กดปุ่ม home แสดงบทความทั้งหมด เรียงตามไอดีคอนเท้นล่าสุด
     if(isset($_GET['home'])){
-        header('Content-type: application/json');
 
         $sql_allcontent = " SELECT 
                                 `user`.ID_User,
@@ -13,10 +12,10 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
                                 post.Status_Post,
                                 content.ID_Content,
                                 content.Date_Content,
-                                content.Text_NameContent,
-                                content.Text_Content,
+                                content.Title,
+                                content.Content,
                                 content.Link_VDO,
-                                content.Link_Map,
+                                content.Location,
                                 content.Counter_Read,
                                 content.Images01,
                                 content.Images02,
@@ -28,9 +27,9 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
                                 content.Images08,
                                 content.Images09,
                                 content.Images10,
-                                cate1.Name_Category AS Cate1,
-                                cate2.Name_Category AS Cate2,
-                                cate3.Name_Category AS Cate3 
+                                cate1.Category AS Cate1,
+                                cate2.Category AS Cate2,
+                                cate3.Category AS Cate3 
                             FROM
                                 (((((( content
                                         LEFT JOIN con_in_cate ON content.ID_Content = con_in_cate.ID_Content )

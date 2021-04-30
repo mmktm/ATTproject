@@ -1,13 +1,12 @@
 <?php 
 header("content-type:text/javascript;charset=utf-8"); //ภาษาไทย
-header('Content-type: application/json'); //ใช้ข้อมูลแบบ json
+header('content-type: application/json'); //ใช้ข้อมูลแบบ json
 include 'connect.php'; //เชื่อมต่อDATABASE cloud
 
     //มีค่า ID_User เข้ามา
     if(isset($_GET['followerlist']) && $_GET['followerlist'] != ''){
-        header('Content-type: application/json');
 
-        //ผู้ที่กำลังติดตามเรา
+        //ชื่อผู้ที่กำลังติดตามเรา
         $iduser = $_GET['followerlist'] ;
 
         $sql_followerlist = " SELECT
@@ -34,7 +33,7 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
                 }
 }else { 
     
-    //เรากำลังติดตาม
+    //ชื่อเรากำลังติดตาม
     if(isset($_GET['followinglist']) && $_GET['followinglist'] != ''){
         header('Content-type: application/json');
 

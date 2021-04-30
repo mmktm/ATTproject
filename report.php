@@ -1,6 +1,6 @@
 <?php 
 header("content-type:text/javascript;charset=utf-8"); //ภาษาไทย
-header('Content-type: application/json'); //ใช้ข้อมูลแบบ json
+header('content-type: application/json'); //ใช้ข้อมูลแบบ json
 include 'connect.php'; //เชื่อมต่อDATABASE cloud
 
 //code report
@@ -13,7 +13,7 @@ if(isset($_POST['report']) && $_POST['report'] != '' ){
     $statusreport = '1';
 
     $sql_report = " INSERT INTO report( ID_User, ID_Content, Status_Report ) 
-                    VALUES ('$iduser','$idcontentreport','1')" ;
+                    VALUES ('$iduser','$idcontentreport','$statusreport')" ;
         
         $result_report = $link->query($sql_report);
 

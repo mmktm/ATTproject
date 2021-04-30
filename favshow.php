@@ -1,13 +1,12 @@
 <?php 
 header("content-type:text/javascript;charset=utf-8"); //ภาษาไทย
-header('Content-type: application/json'); //ใช้ข้อมูลแบบ json
+header('content-type: application/json'); //ใช้ข้อมูลแบบ json
 include 'connect.php'; //เชื่อมต่อDATABASE cloud
 
 //code showยอดfav ของcontent นั้นๆ
 //รับค่า ID_Content ($_POST['ID_Content'])
 
 if(isset($_POST['ID_Content']) && $_POST['ID_Content'] != '' ){
-    header('Content-type: application/json');
     
     $idcontentfav = $_POST['ID_Content'] ;
 

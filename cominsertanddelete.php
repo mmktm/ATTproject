@@ -1,6 +1,6 @@
 <?php 
 header("content-type:text/javascript;charset=utf-8"); //ภาษาไทย
-header('Content-type: application/json'); //ใช้ข้อมูลแบบ json
+header('content-type: application/json'); //ใช้ข้อมูลแบบ json
 include 'connect.php'; //เชื่อมต่อDATABASE cloud
 
 //code insert comment
@@ -14,7 +14,7 @@ if(isset($_POST['com']) && $_POST['com'] != '' ){
     $textcom = $_POST['textcom'] ;
     $statuscom = '1';
 
-    $sql_com = " INSERT INTO `comment` (ID_User,ID_Content,Text_Comment,Status_Comment)
+    $sql_com = " INSERT INTO `comment` (ID_User,ID_Content,Comment,Status_Comment)
                                 VALUES ('$idusercom','$idcontentcom','$textcom','$statuscom')" ;
         
         $result_com = $link->query($sql_com);

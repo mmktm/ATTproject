@@ -1,11 +1,10 @@
 <?php 
 header("content-type:text/javascript;charset=utf-8"); //ภาษาไทย
-header('Content-type: application/json'); //ใช้ข้อมูลแบบ json
+header('content-type: application/json'); //ใช้ข้อมูลแบบ json
 include 'connect.php'; //เชื่อมต่อDATABASE cloud
 
     //ถ้ามีตัวแปร myfavstore รับค่า ID_user เข้ามา
     if(isset($_GET['myfavstore'])&& $_GET['myfavstore'] != '') {
-        header('Content-type: application/json');
 
         //ตัวแปรรับค่า ID_User
 		$myfavstore = $_GET['myfavstore'];
@@ -19,14 +18,14 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
                                 content.ID_Content,
                                 content.Date_Content,
                                 content.Status_Content,
-                                content.Text_NameContent,
+                                content.Title,
                                 content.Images01,
                                 con_in_cate.ID_Category1,
                                 con_in_cate.ID_Category2,
                                 con_in_cate.ID_Category3,
-                                cate1.Name_Category AS Cate1,
-                                cate2.Name_Category AS Cate2,
-                                cate3.Name_Category AS Cate3 
+                                cate1.Category AS Cate1,
+                                cate2.Category AS Cate2,
+                                cate3.Category AS Cate3 
                             
                             FROM
                                 ((((( `user` INNER JOIN favorite ON user.ID_User = favorite.ID_User ) 

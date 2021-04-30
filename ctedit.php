@@ -1,20 +1,19 @@
 <?php 
 header("content-type:text/javascript;charset=utf-8"); //ภาษาไทย
-header('Content-type: application/json'); //ใช้ข้อมูลแบบ json
+header('content-type: application/json'); //ใช้ข้อมูลแบบ json
 include 'connect.php'; //เชื่อมต่อDATABASE cloud
 
     //ต้องรับมา 2 ค่า id-user and id-content
 
     //กดปุ่ม edit รับค่า ID_content ที่ต้องการ edit เข้ามา
     if(isset($_POST['ID_Contentedit']) && $_POST['ID_Contentedit'] != '') {
-        header('Content-type: application/json'); //แสดงแบบ json
         
         $ID_User = $_POST['ID_User']; //iduser
         $ID_Contentedit = $_POST['ID_Contentedit'];//idcontent
-        $Text_nct = $_POST['Text_nct'];//namecontent
-        $Text_ct = $_POST['Text_ct'];//text
+        $Title = $_POST['Title'];//namecontent
+        $Content = $_POST['Content'];//text
         $Link_VDO = $_POST['Link_VDO'];//link vdo
-        $Link_Map = $_POST['Link_Map'];//link map
+        $Location = $_POST['Location'];//link map
         $ID_Category1 = $_POST['ID_Category1'];//idcategory1
         $ID_Category2 = $_POST['ID_Category2'];//idcategory2
         $ID_Category3 = $_POST['ID_Category3'];//idcategory3
@@ -36,13 +35,13 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
             if($checkpost == $ID_User ){
                     //select content
                     $sql_slcontent = " SELECT
-                                            content.Text_NameContent,
-                                            content.Text_Content,
+                                            content.Title,
+                                            content.Content,
                                             content.Link_VDO,
-                                            content.Link_Map,
-                                            cate1.Name_Category AS Cate1,
-                                            cate2.Name_Category AS Cate2,
-                                            cate3.Name_Category AS Cate3
+                                            content.Location,
+                                            cate1.Category AS Cate1,
+                                            cate2.Category AS Cate2,
+                                            cate3.Category AS Cate3
                                         FROM
                                         (((content INNER JOIN con_in_cate ON content.ID_Content = con_in_cate.ID_Content )
                                                 LEFT JOIN category cate1 ON con_in_cate.ID_Category1 = cate1.ID_Category )
@@ -65,10 +64,10 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
                     //Content edit (update)
                     $sql_ctupdate = " UPDATE content
                                         SET 
-                                            Text_NameContent = '$Text_nct',
-                                            Text_Content = '$Text_ct',
+                                            Title = '$Title',
+                                            Content = '$Content',
                                             Link_VDO = '$Link_VDO',
-                                            Link_Map = '$Link_Map'
+                                            Location = '$Location'
                                         WHERE content.ID_content = '$ID_Contentedit'  && content.Status_Content = 'Post' " ;
                 
                         $result_ctupdate = $link->query($sql_ctupdate);

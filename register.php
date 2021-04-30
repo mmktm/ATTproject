@@ -1,6 +1,6 @@
 <?php 
-header("Content-type:text/javascript;charset=utf-8"); //ภาษาไทย
-header('Content-type:application/json'); //ใช้ข้อมูลแบบ json
+header("content-type:text/javascript;charset=utf-8"); //ภาษาไทย
+header('content-type:application/json'); //ใช้ข้อมูลแบบ json
 include 'connect.php'; //เชื่อมต่อDATABASE cloud
 
     $Username = $_POST['Username'];
@@ -18,7 +18,7 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
             }else{
                 
                 $sql_insertregis = "INSERT INTO user (Username, Passwordd , Email, Status_User)
-				                    VALUES ('$Username','$Passwordd','$Email','$Status_User')" ;
+				                    VALUES ('$Username','($Passwordd)','$Email','$Status_User')" ; //.md5 เข้ารหัส
 
                     $result_insertregis = $link->query($sql_insertregis);
                     if($result_insertregis){

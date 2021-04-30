@@ -1,12 +1,11 @@
 <?php 
 header("content-type:text/javascript;charset=utf-8"); //ภาษาไทย
-header('Content-type: application/json'); //ใช้ข้อมูลแบบ json
+header('content-type: application/json'); //ใช้ข้อมูลแบบ json
 include 'connect.php'; //เชื่อมต่อDATABASE cloud
     
     //ต้องรับมา 2 ค่า id-user and id-content
     //กดปุ่ม delete รับค่า ID_Content ที่ต้องการ delete 
     if(isset($_POST['ID_Contentdl']) && $_POST['ID_Contentdl'] != ''){
-        header('Content-type: application/json'); //แสดงแบบ json
 
         $ID_User = $_POST['ID_User']; //iduser
         $ID_Contentdl = $_POST['ID_Contentdl']; //idcontent

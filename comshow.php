@@ -1,6 +1,6 @@
 <?php 
 header("content-type:text/javascript;charset=utf-8"); //ภาษาไทย
-header('Content-type: application/json'); //ใช้ข้อมูลแบบ json
+header('content-type: application/json'); //ใช้ข้อมูลแบบ json
 include 'connect.php'; //เชื่อมต่อDATABASE cloud
 
 //code show data comment ของ content นั้นๆ
@@ -8,14 +8,13 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
 //รับค่า ID_Content ($_POST['ID_Content'])
 
 if(isset($_POST['ID_Content']) && $_POST['ID_Content'] != '' ){
-    header('Content-type: application/json');
 
     $idcontentcomshow = $_POST['ID_Content'] ;
 
     $sql_comshow = " SELECT 
                         `comment`.ID_Comment,
                         `user`.Username,
-                        `comment`.Text_Comment,
+                        `comment`.Comment,
                         `comment`.Date_Comment 
                         FROM 
                         `comment` JOIN `user` ON `comment`.ID_User = `user`.ID_User 
