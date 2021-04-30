@@ -1,6 +1,7 @@
 <?php 
 header("content-type:text/javascript;charset=utf-8"); //ภาษาไทย
 header('content-type: application/json'); //ใช้ข้อมูลแบบ json
+date_default_timezone_set('Asia/Bangkok');//timezone
 include 'connect.php'; //เชื่อมต่อDATABASE cloud
 
 //codeรับค่าการกด fav
@@ -12,6 +13,8 @@ if(isset($_POST['fav']) && $_POST['fav'] != '' ){
     $iduserfav = $_POST['iduserfav'] ; //รับตัวแปรชื่อ  $_POST['iduserfav'] เข้ามาเก็บไว้ใน $iduserfav
     $idcontentfav = $_POST['fav'] ;
     $statusfav = '1';
+    $Date_Fav = date("Y-m-d") ;
+    $Time_Fav = date("H:i:s") ;
 
     $sql_checkfav = " SELECT ID_User,ID_Content,Status_Fav 
                         FROM favorite 
@@ -37,8 +40,8 @@ if(isset($_POST['fav']) && $_POST['fav'] != '' ){
         }else{
 
             //fav
-            $sql_fav = " INSERT INTO favorite ( ID_User, ID_Content, Status_Fav )
-                        VALUES ('$iduserfav','$idcontentfav','$statusfav')" ; //เก็บค่าการกดfav
+            $sql_fav = " INSERT INTO favorite ( ID_User, ID_Content, Status_Fav,Date_Fav,Time_Fav )
+                        VALUES ('$iduserfav','$idcontentfav','$statusfav','$Date_Fav','$Time_Fav')" ; //เก็บค่าการกดfav
 
                 $result_fav = $link->query($sql_fav);
 

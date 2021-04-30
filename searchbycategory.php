@@ -12,6 +12,7 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
         $sql_searchbycategory = " SELECT
                                     content.ID_Content,
                                     content.Date_Content,
+                                    content.Time_Content,
                                     content.Status_Content,
                                     content.Title,
                                     content.Content,

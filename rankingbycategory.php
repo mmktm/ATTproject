@@ -13,6 +13,7 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
                                     content.Counter_Read,
                                     content.ID_Content,
                                     content.Date_Content,
+                                    content.Time_Content,
                                     content.Status_Content,
                                     content.Title,
                                     content.Content,

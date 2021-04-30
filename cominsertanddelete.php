@@ -1,6 +1,7 @@
 <?php 
 header("content-type:text/javascript;charset=utf-8"); //ภาษาไทย
 header('content-type: application/json'); //ใช้ข้อมูลแบบ json
+date_default_timezone_set('Asia/Bangkok');//timezone
 include 'connect.php'; //เชื่อมต่อDATABASE cloud
 
 //code insert comment
@@ -13,9 +14,11 @@ if(isset($_POST['com']) && $_POST['com'] != '' ){
     $idcontentcom = $_POST['com'] ;
     $textcom = $_POST['textcom'] ;
     $statuscom = '1';
+    $Date_Comment = date("Y-m-d") ;
+    $Time_Comment = date("H:i:s") ;
 
-    $sql_com = " INSERT INTO `comment` (ID_User,ID_Content,Comment,Status_Comment)
-                                VALUES ('$idusercom','$idcontentcom','$textcom','$statuscom')" ;
+    $sql_com = " INSERT INTO `comment` (ID_User,ID_Content,Comment,Status_Comment,Date_Comment,Time_Comment)
+                                VALUES ('$idusercom','$idcontentcom','$textcom','$statuscom','$Date_Comment','$Time_Comment')" ;
         
         $result_com = $link->query($sql_com);
         if($result_com){

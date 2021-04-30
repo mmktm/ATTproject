@@ -14,6 +14,7 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
                                 `user`.Username,
                                 save.Status_Save,
                                 save.Date_Save,
+                                save.Time_Save,
                                 content.ID_Content,
                                 content.Date_Content,
                                 content.Status_Content,

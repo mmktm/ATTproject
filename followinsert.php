@@ -1,6 +1,7 @@
 <?php 
 header("content-type:text/javascript;charset=utf-8"); //ภาษาไทย
 header('content-type: application/json'); //ใช้ข้อมูลแบบ json
+date_default_timezone_set('Asia/Bangkok');//timezone
 include 'connect.php'; //เชื่อมต่อDATABASE cloud
 
 //codeรับค่าการกด follow
@@ -11,6 +12,8 @@ if(isset($_POST['follow']) && $_POST['follow'] != '' ){
     $iduser = $_POST['iduser'] ; //รับตัวแปรชื่อ  $_POST['iduserfollow'] เข้ามาเก็บไว้ใน $iduserfollow
     $idfollowing = $_POST['follow'] ;
     $statusfollow = '1';
+    $Date_Follow = date("Y-m-d") ;
+    $Time_Follow = date("H:i:s") ;
 
     $sql_checkfollow = " SELECT ID_User,ID_Following,Status_follow 
                         FROM follow
@@ -36,8 +39,8 @@ if(isset($_POST['follow']) && $_POST['follow'] != '' ){
         }else{
 
             //follow
-            $sql_follow = " INSERT INTO follow ( ID_User, ID_Following, Status_follow )
-                        VALUES ('$iduser','$idfollowing','$statusfollow')" ; //เก็บค่าการกดfollow
+            $sql_follow = " INSERT INTO follow ( ID_User, ID_Following, Status_follow, Date_Follow,Time_Follow )
+                        VALUES ('$iduser','$idfollowing','$statusfollow','$Date_Follow','$Time_Follow')" ; //เก็บค่าการกดfollow
 
                 $result_follow = $link->query($sql_follow);
 

@@ -16,6 +16,7 @@ if(isset($_POST['ID_Content']) && $_POST['ID_Content'] != '' ){
                         post.Status_Post,
                         content.ID_Content,
                         content.Date_Content,
+                        content.Time_Content,
                         content.Title,
                         content.Content,
                         content.Link_VDO,

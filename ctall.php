@@ -12,6 +12,7 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
                                 post.Status_Post,
                                 content.ID_Content,
                                 content.Date_Content,
+                                content.Time_Content,
                                 content.Title,
                                 content.Content,
                                 content.Link_VDO,

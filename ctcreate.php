@@ -1,6 +1,7 @@
 <?php 
 header("content-type:text/javascript;charset=utf-8"); //ภาษาไทย
 header('content-type: application/json'); //ใช้ข้อมูลแบบ json
+date_default_timezone_set('Asia/Bangkok');//timezone
 include 'connect.php'; //เชื่อมต่อDATABASE cloud
 
     //กดปุ่ม Post รับค่า ID_User เข้ามา
@@ -16,16 +17,17 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
         $ID_Category2 = $_POST['ID_Category2'];//category2
         $ID_Category3 = $_POST['ID_Category3'];//category3
         //images รอเพิ่มรูป
+        $Date_Content = date("Y-m-d") ;
+        $Time_Content = date("H:i:s") ;
         // echo " $ID_Userpost \n " ; //ดู iduserที่รับเข้ามา
 
         //input content
         $sql_content = " INSERT INTO content
-                          (Status_Content, Title, Content, Link_VDO, Location)
+                          (Date_Content,Time_Content,Status_Content, Title, Content, Link_VDO, Location)
                          VALUES
-                          ('$Status_Content', '$Title', '$Content', '$Link_VDO', '$Location' ) " ;
+                          ('$Date_Content','$Time_Content','$Status_Content', '$Title', '$Content', '$Link_VDO', '$Location' ) " ;
 
             $result_content = $link->query($sql_content);
-            // var_dump($result_content);
                 if($result_content){
                     echo "result_content is true \n"; }
                 else{
@@ -65,7 +67,8 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
 
         //select date_content ->insert data to table post
         $sql_datepost = " SELECT
-                            Date_Content 
+                            Date_Content,
+                            Time_Content
                           FROM
                             content 
                           WHERE
@@ -75,13 +78,14 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
                 if($result_datepost){
                     $row_datepost = $result_datepost->fetch_assoc();
                     $datepost = $row_datepost['Date_Content'];
+                    $timepost = $row_datepost['Time_Content'];
                     // echo $datepost;
 
                     //insert data to post
                     $sql_post = "INSERT INTO post
-                                    ( ID_User, ID_Content, Status_Post, Date_Post )
+                                    ( ID_User, ID_Content, Status_Post, Date_Post ,Time_Post)
                                  VALUES
-                                    ('$ID_Userpost','$idcontent','$Status_Content','$datepost')" ;
+                                    ('$ID_Userpost','$idcontent','$Status_Content','$datepost','$timepost')" ;
                         $result_post = $link->query($sql_post);
                         // echo "\n result_post is ".json_encode($result_post);
                 } else {

@@ -9,8 +9,38 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
         //ตัวแปรรับค่าการค้นหาบทความ
 		$searchbycontent = $_GET['searchbycontent'];
         
-        $sql_searchbycontent = " SELECT * FROM content
-                                 WHERE Status_Content = 'Post' AND Title LIKE '%{$searchbycontent}%' " ;
+        $sql_searchbycontent = " SELECT
+                                    content.ID_Content,
+                                    content.Date_Content,
+                                    content.Time_Content,
+                                    content.Status_Content,
+                                    content.Title,
+                                    content.Content,
+                                    content.Link_VDO,
+                                    content.Location,
+                                    content.Counter_Read,
+                                    content.Images01,
+                                    content.Images02,
+                                    content.Images03,
+                                    content.Images04,
+                                    content.Images05,
+                                    content.Images06,
+                                    content.Images07,
+                                    content.Images08,
+                                    content.Images09,
+                                    content.Images10,
+                                    con_in_cate.ID_Category1,
+                                    con_in_cate.ID_Category2,
+                                    con_in_cate.ID_Category3,
+                                    cate1.Category AS Cate1,
+                                    cate2.Category AS Cate2,
+                                    cate3.Category AS Cate3
+                                FROM
+                                    (((content INNER JOIN con_in_cate ON content.ID_Content = con_in_cate.ID_Content )
+                                    left JOIN category cate1 ON con_in_cate.ID_Category1 = cate1.ID_Category )
+                                    left JOIN category cate2 ON con_in_cate.ID_Category2 = cate2.ID_Category)
+                                    left JOIN category cate3 ON con_in_cate.ID_Category3 = cate3.ID_Category 
+                                WHERE content.Status_Content = 'Post' AND content.Title LIKE '%{$searchbycontent}%' " ;
 
         $result_searchbycontent = $link->query($sql_searchbycontent);
         if($result_searchbycontent->num_rows <=0 ){
