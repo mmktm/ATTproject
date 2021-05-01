@@ -1,0 +1,68 @@
+.wrapper {
+    position: absolute;/* อิสระ */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* กำหนดตรงกลาง */
+  }
+.box1 { /* กล่องสีดำตรงกลาง */
+   
+    width: 600px;
+    height: 340px;
+    padding: 50px;/*ห่างจากขอบใน 20 px*/
+    margin: 30px;
+    background-color:white;
+    overflow: hidden;
+    /* border: 5px solid orange; /*เส้นขอบ */
+}
+.box2{
+  width: 25%;
+  padding: 10px 10px ;
+  margin: 6px 0;
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 2px solid orange;
+}
+.box3{
+  width: auto;
+  padding: 10px 10px ;
+  margin: 6px 0;
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 2px solid rgb(255, 0, 55);
+  border-radius: 4px;
+  
+}
+.box4{
+  width: 50%;
+  padding: 10px 10px ;
+  margin: 6px 0;
+  box-sizing: border-box;
+  border: none;
+  border-left: 2px solid rgb(255, 0, 55);
+  border-radius: 4px;
+  
+}
+.sm {
+  display: block;
+  padding: 0.75rem;
+  width: 50%;
+  border-radius: 0.25rem;
+  color: #fff;
+  border: 0;
+  background-color: goldenrod;
+  border-color: goldenrod;
+}
+.sm:hover,.btn:focus {
+  opacity: 0.8;
+  cursor: pointer;
+}
+.text1{
+    color: blanchedalmond;
+    font-size: large ;
+    text-shadow: 2px 2px red;
+}
+.text2{
+  color: bisque;
+  font-size: medium;
+}
