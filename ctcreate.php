@@ -15,8 +15,16 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
         $Location = $_POST['Location'];//link map
         $ID_Category1 = $_POST['ID_Category1']; //category1
         $ID_Category2 = $_POST['ID_Category2'];//category2
-        $ID_Category3 = $_POST['ID_Category3'];//category3
-        $Images01 = $_POST['Images01'];
+        $ID_Category3 = $_POST['ID_Category3'];//category3\
+
+        //input image
+        $Images01 = $_FILES['Images01']['name'];
+        $ImagePath = 'uploadimages/'.$Images01;
+        $tmp_name = $_FILES['Images01']['tmp_name'];
+
+        move_uploaded_file($tmp_name,$ImagePath);
+
+
         //images รอเพิ่มรูป
         $Date_Content = date("Y-m-d") ;
         $Time_Content = date("H:i:s") ;
