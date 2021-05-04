@@ -1,0 +1,130 @@
+.wrapper {
+    position: absolute;/* อิสระ */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* กำหนดตรงกลาง */
+  }
+.boxregis { /* กล่องตรงกลาง */
+   
+    width: 500px;
+    height: 380px;
+    padding: 50px;/*ห่างจากขอบใน 20 px*/
+    margin: 20px;
+    background-color: #fddb3a ;
+    overflow: hidden;
+    /* border: 5px solid orange; /*เส้นขอบ */
+}
+.boxlogin { /* กล่องตรงกลาง */
+   
+  width: 500px;
+  height: 250px;
+  padding: 50px;/*ห่างจากขอบใน 20 px*/
+  margin: 20px;
+  background-color: #fddb3a ;
+  overflow: hidden;
+  /* border: 5px solid orange; /*เส้นขอบ */
+}
+.box2{
+  width: 25%;
+  padding: 10px 10px ;
+  margin: 6px 0;
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 2px solid orange;
+}
+.box3{
+  width: auto;
+  padding: 10px 10px ;
+  margin: 6px 0;
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 2px solid rgb(255, 0, 55);
+  border-radius: 4px;
+  
+}
+.box4{
+  width: 50%;
+  padding: 10px 10px ;
+  margin: 6px 0;
+  box-sizing: border-box;
+  border: none;
+  border-left: 2px solid rgb(255, 0, 55);
+  border-radius: 4px;
+  
+}
+.sm { /*ปุ่ม submit */
+  display: block;
+  padding: 0.75rem;
+  width: 50%;
+  border-radius: 0.25rem;
+  color: #fff;
+  border: 5;
+  background-color: #414448;
+  border-color:  #414448;
+  /* margin: 10px 0px 10px 0px; */
+}
+.sm:hover,.btn:focus {
+  opacity: 0.8;
+  cursor: pointer;
+}
+.text1{
+    color: #414448 ;
+    font-size: large ;
+    /* text-shadow: 2px 2px red; */
+}
+.text2{
+  color: bisque;
+  font-size: medium;
+}
+
+.homeheader { /*ตัวหนังสือ Home Page*/
+  text-align: center;
+  font-size: 5rem;
+}
+.homecontent {
+  text-align: center;
+  padding-top: 3rem;
+  width: 100%;
+  background: #ccc;
+  height: 100vh;
+}
+
+.input-group {
+  margin: 0px 0px 10px 0px;
+}
+.input-group input {
+  height: 20px;
+  width: 93%;
+  padding: 5px 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid gray;
+}
+.error {
+  width: 92%;
+  margin: 0px auto;
+  padding: 5px;
+  border: 1px solid #a94442;
+  color: #a94442;
+  background: #f2dede;
+  border-radius: 5px;
+  text-align: center ;
+}
+.success {
+  color: #3c763d;
+  background: #dff9d8;
+  border: 1px solid #3c763d;
+  margin-bottom: 20px;
+}
+.header {
+  width: 30%;
+  margin: 50px auto 0px;
+  color: white;
+  background: #5f9ea0;
+  text-align: center;
+  border: 1px solid #b0c4de;
+  border-bottom: none;
+  border-radius: 10px 10px 0px 0px;
+  padding: 20px;
+}

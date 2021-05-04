@@ -16,6 +16,7 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
         $ID_Category1 = $_POST['ID_Category1']; //category1
         $ID_Category2 = $_POST['ID_Category2'];//category2
         $ID_Category3 = $_POST['ID_Category3'];//category3
+        $Images01 = $_POST['Images01'];
         //images รอเพิ่มรูป
         $Date_Content = date("Y-m-d") ;
         $Time_Content = date("H:i:s") ;
@@ -23,9 +24,9 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
 
         //input content
         $sql_content = " INSERT INTO content
-                          (Date_Content,Time_Content,Status_Content, Title, Content, Link_VDO, Location)
+                          (Date_Content,Time_Content,Status_Content, Title, Content, Link_VDO, Location,Images01)
                          VALUES
-                          ('$Date_Content','$Time_Content','$Status_Content', '$Title', '$Content', '$Link_VDO', '$Location' ) " ;
+                          ('$Date_Content','$Time_Content','$Status_Content', '$Title', '$Content', '$Link_VDO', '$Location','$Images01' ) " ;
 
             $result_content = $link->query($sql_content);
                 if($result_content){

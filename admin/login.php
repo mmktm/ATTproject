@@ -10,12 +10,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="style.css">
-    <title>Register Admin</title>
+    <title>Login Admin</title>
     
     <style type = "text/css">
         body {
             /* background-image:url('bg.jpg') ; */
-            background-color: #F6F4E6 ; 
+            background-color: #F6F4E6 ;
             background-size: auto;
             font-family: "Ekkamai new" ; src :url(fonts/EkkamaiNew-Regular.ttf) ;
         }
@@ -24,12 +24,10 @@
 </head> 
 <body>
     <div class="wrapper"> <!-- Register Admin -->
-    <div class="boxregis"><center><div class="text1"><strong>- Register Admin -</strong></center><br>
+    <div class="boxlogin"><center><div class="text1"><strong>- Login Admin -</strong></center><br>
 
-    <form action="register_db.php" method="post">
-
-        <?php include('errors.php'); ?> <!-- ถ้าเชื่อมไม่ได้ -->
-            <?php if (isset($_SESSION['error'])) : ?>
+    <form action="login_db.php" method="post">
+        <?php if (isset($_SESSION['error'])) : ?>
                 <div class="error">
                     <h3>
                         <?php 
@@ -45,22 +43,14 @@
             <input type="text" name = "Username">
         </div>
         <div class = "input-group">
-            <label for="Email">Email</label>
-            <input type="email" name = "Email">
+            <label for="Password">Password</label>
+            <input type="password" name = "Password">
         </div>
         <div class = "input-group">
-            <label for="Password_1">Password</label>
-            <input type="password" name = "Password_1">
-        </div>
-        <div class = "input-group">
-            <label for="Password_2">Confirm Password</label>
-            <input type="password" name = "Password_2">
-        </div>
-        <div class = "input-group">
-        <center><button type="submit" name = "Regis_Admin" class ="sm">Register</button></center>
+            <center><button type="submit" name = "Login_Admin" class ="sm">Login</button></center>
         </div>
 
-        <center><p>Alredy an Admin ? <a href="login.php">Sing in</a></p></center>
+        <center><p>Not yet an Admin ? <a href="register.php">Sing up</a></p></center>
 
     </form>
     
