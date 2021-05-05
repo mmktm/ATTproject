@@ -18,9 +18,9 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
         $ID_Category3 = $_POST['ID_Category3'];//category3\
 
         //input image
-        $Images01 = $_FILES['Images01']['name'];
-        $ImagePath = 'uploadimages/'.$Images01;
+        $Images01 = $_FILES['Images01']['name'];        
         $tmp_name = $_FILES['Images01']['tmp_name'];
+        $ImagePath = 'uploadimages/'.$Images01;
 
         move_uploaded_file($tmp_name,$ImagePath);
 

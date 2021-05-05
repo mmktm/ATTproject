@@ -3,13 +3,13 @@ header("content-type:text/javascript;charset=utf-8"); //ภาษาไทย
 header('content-type: application/json'); //ใช้ข้อมูลแบบ json
 include 'connect.php'; //เชื่อมต่อDATABASE cloud
 
-    //ถ้ามีการกดตัวแปร allranking เข้ามา
-    if(isset($_GET['allranking'])) {
+    //ถ้ามีการกดตัวแปร rankbyallct เข้ามา
+    if(isset($_GET['rankbyallct'])) {
 
         //ตัวแปรรับค่า ID_category
-		//$allranking = $_GET['allranking'];
+		//$rankbyallct = $_GET['rankbyallct'];
         
-        $sql_allranking = " SELECT
+        $sql_rankbyallct = " SELECT
                                     content.Counter_Read,
                                     content.ID_Content,
                                     content.Date_Content,
@@ -46,15 +46,15 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
 	                                content.Counter_Read DESC   
                                     LIMIT 10 " ;
 
-        $result_allranking = $link->query($sql_allranking);
-        if($result_allranking->num_rows <=0 ){
-            echo "ไม่พบบทความเกี่ยวกับ ID_Category : $allranking น้า" ;
+        $result_rankbyallct = $link->query($sql_rankbyallct);
+        if($result_rankbyallct->num_rows <=0 ){
+            echo "ไม่พบบทความเกี่ยวกับ ID_Category : $rankbyallct น้า" ;
         } else {
-            while ($row_allranking = $result_allranking->fetch_assoc()){
-                $output_allranking[] = $row_allranking ;
-                $j_allranking = json_encode($output_allranking);
+            while ($row_rankbyallct = $result_rankbyallct->fetch_assoc()){
+                $output_rankbyallct[] = $row_rankbyallct ;
+                $j_rankbyallct = json_encode($output_rankbyallct);
             }
-            echo "$j_allranking\n" ;
+            echo "$j_rankbyallct\n" ;
         }
 
     }
