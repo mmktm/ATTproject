@@ -39,6 +39,10 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
                                             content.Content,
                                             content.Link_VDO,
                                             content.Location,
+                                            content.Images01,
+                                            content.Images02,
+                                            content.Images03,
+                                            content.Images04,
                                             cate1.Category AS Cate1,
                                             cate2.Category AS Cate2,
                                             cate3.Category AS Cate3

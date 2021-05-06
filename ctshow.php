@@ -26,12 +26,6 @@ if(isset($_POST['ID_Content']) && $_POST['ID_Content'] != '' ){
                         content.Images02,
                         content.Images03,
                         content.Images04,
-                        content.Images05,
-                        content.Images06,
-                        content.Images07,
-                        content.Images08,
-                        content.Images09,
-                        content.Images10,
                         cate1.Category AS Cate1,
                         cate2.Category AS Cate2,
                         cate3.Category AS Cate3 
