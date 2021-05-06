@@ -31,32 +31,22 @@
         }
     </style>
 
-</head> 
+</head>
 <body>
-    <div class="homeheader">
-        <h2>Home Page</h2>
-    </div>
-
-    <div class="homecontent">
-        <!--  notification message -->
-        <?php if (isset($_SESSION['success'])) : ?>
-            <div class="success">
-                <h3>
-                    <?php 
-                        echo $_SESSION['success'];
-                        unset($_SESSION['success']);
-                    ?>
-                </h3>
-            </div>
-        <?php endif ?>
-
         <!-- logged in user information -->
         <?php if(isset($_SESSION['Username'])) : ?>
 
-            <p>Welcome <strong><?php echo $_SESSION['Username']; ?></strong></p>
-            <p><center><a href="index.php?logout='1'" style="color: red;">Logout</a></center></p>
-            <?php endif ?>
-    </div>
-    
+            <a href="index.php?logout='1'" ><div style='text-align:right ; color:red;' >Logout</a></div>
+            <p>Welcome Admin : <strong><?php echo $_SESSION['Username']; ?></strong></p>
+            
+        <?php endif ?>
+
+        <center><div class = "input-group">
+        <a href="reportdata.php" ><div class="sm">Report</a></div>
+        <a href="userdata.php" ><div class="sm">User</a></div>
+        <a href="contentdata.php" ><div class="sm">Content</a></div>
+   
+        </div></center>
+
 </body>
 </html>

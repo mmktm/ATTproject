@@ -7,6 +7,8 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
     //กดปุ่ม Post รับค่า ID_User เข้ามา
     if(isset($_POST['ID_Userpost']) && $_POST['ID_Userpost'] != '') {
         
+        $Date_Content = date("Y-m-d") ;
+        $Time_Content = date("H:i:s") ;
         $Status_Content = 'Post'; //status
         $ID_Userpost = $_POST['ID_Userpost']; //iduser
         $Title = $_POST['Title']; //title
@@ -18,23 +20,31 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
         $ID_Category3 = $_POST['ID_Category3'];//category3\
 
         //input image
-        $Images01 = $_FILES['Images01']['name'];        
-        $tmp_name = $_FILES['Images01']['tmp_name'];
-        $ImagePath = 'uploadimages/'.$Images01;
+        $Images01 = $_FILES['Images01']['name'];     
+        $tmp_name01 = $_FILES['Images01']['tmp_name'];
+        $ImagePath01 = 'uploadimages/'.$Images01;
+        move_uploaded_file($tmp_name01,$ImagePath01);
 
-        move_uploaded_file($tmp_name,$ImagePath);
+        $Images02 = $_FILES['Images02']['name'];     
+        $tmp_name02 = $_FILES['Images02']['tmp_name'];
+        $ImagePath02 = 'uploadimages/'.$Images02;
+        move_uploaded_file($tmp_name02,$ImagePath02);
 
+        $Images03 = $_FILES['Images03']['name'];     
+        $tmp_name03 = $_FILES['Images03']['tmp_name'];
+        $ImagePath03 = 'uploadimages/'.$Images03;
+        move_uploaded_file($tmp_name03,$ImagePath03);
 
-        //images รอเพิ่มรูป
-        $Date_Content = date("Y-m-d") ;
-        $Time_Content = date("H:i:s") ;
-        // echo " $ID_Userpost \n " ; //ดู iduserที่รับเข้ามา
-
+        $Images04 = $_FILES['Images04']['name'];     
+        $tmp_name04 = $_FILES['Images04']['tmp_name'];
+        $ImagePath04 = 'uploadimages/'.$Images04;
+        move_uploaded_file($tmp_name04,$ImagePath04);
+        
         //input content
         $sql_content = " INSERT INTO content
-                          (Date_Content,Time_Content,Status_Content, Title, Content, Link_VDO, Location,Images01)
+                          (Date_Content,Time_Content,Status_Content, Title, Content, Link_VDO, Location,Images01,Images02,Images03,Images04)
                          VALUES
-                          ('$Date_Content','$Time_Content','$Status_Content', '$Title', '$Content', '$Link_VDO', '$Location','$Images01' ) " ;
+                          ('$Date_Content','$Time_Content','$Status_Content', '$Title', '$Content', '$Link_VDO', '$Location','$Images01','$Images02','$Images03','$Images04' ) " ;
 
             $result_content = $link->query($sql_content);
                 if($result_content){

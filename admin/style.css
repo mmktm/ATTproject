@@ -26,12 +26,18 @@
   /* border: 5px solid orange; /*เส้นขอบ */
 }
 .box2{
-  width: 25%;
-  padding: 10px 10px ;
-  margin: 6px 0;
+  display: block ;
+  width: 5%;
+  padding: 5px 5px; /*ขนาด*/
+  /* margin: 0px 10px; */
   box-sizing: border-box;
   border: none;
-  border-bottom: 2px solid orange;
+  background-color: #fddb3a ;
+  /* border-bottom: 2px solid orange; */
+}
+.box2:hover,.btn:focus {
+  opacity: 0.8;
+  cursor: pointer;
 }
 .box3{
   width: auto;
@@ -62,7 +68,7 @@
   border: 5;
   background-color: #414448;
   border-color:  #414448;
-  /* margin: 10px 0px 10px 0px; */
+  margin: 10px 0px 10px 0px;
 }
 .sm:hover,.btn:focus {
   opacity: 0.8;
@@ -95,8 +101,8 @@
 }
 .input-group input {
   height: 20px;
-  width: 93%;
-  padding: 5px 10px;
+  width: 95%;
+  padding: 6px 10px ;
   font-size: 16px;
   border-radius: 5px;
   border: 1px solid gray;
