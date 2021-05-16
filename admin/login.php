@@ -15,7 +15,7 @@
     <style type = "text/css">
         body {
             /* background-image:url('bg.jpg') ; */
-            background-color: #F6F4E6 ;
+            background-color: #414448 ;
             background-size: auto;
             font-family: "Ekkamai new" ; src :url(fonts/EkkamaiNew-Regular.ttf) ;
         }

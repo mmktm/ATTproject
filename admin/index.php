@@ -25,7 +25,7 @@
     <style type = "text/css">
         body {
             /* background-image:url('bg.jpg') ; */
-            background-color: #F6F4E6 ;
+            background-color: bisque ;
             background-size: auto;
             font-family: "Ekkamai new" ; src :url(fonts/EkkamaiNew-Regular.ttf) ;
         }
@@ -42,9 +42,9 @@
         <?php endif ?>
 
         <center><div class = "input-group">
-        <a href="reportdata.php" ><div class="sm">Report</a></div>
-        <a href="userdata.php" ><div class="sm">User</a></div>
-        <a href="contentdata.php" ><div class="sm">Content</a></div>
+        <a href="reportdata.php" ><div class="box2">Report</a></div>
+        <a href="userdata.php" ><div class="box2">User</a></div>
+        <a href="contentdata.php" ><div class="box2">Content</a></div>
    
         </div></center>
 
