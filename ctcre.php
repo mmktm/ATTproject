@@ -9,23 +9,23 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
     if(isset($_POST['Title']) && $_POST['Title'] != '') 
     {
         
-        $Date_Content = date("Y-m-d") ;
-        $Time_Content = date("H:i:s") ;
-        $Status_Content = 'Post'; //status
-        $ID_Userpost = $_POST['ID_Userpost']; //iduser
+        // $Date_Content = date("Y-m-d") ;
+        // $Time_Content = date("H:i:s") ;
+        // $Status_Content = 'Post'; //status
+        // $ID_Userpost = $_POST['ID_Userpost']; //iduser
         $Title = $_POST['Title']; //title
         $Content = $_POST['Content'];//content
-        $Link_VDO = $_POST['Link_VDO'];//link vdo
-        $Location = $_POST['Location'];//link map
-        $ID_Category1 = $_POST['ID_Category1']; //category1
-        $ID_Category2 = $_POST['ID_Category2'];//category2
-        $ID_Category3 = $_POST['ID_Category3'];//category3\
+        // $Link_VDO = $_POST['Link_VDO'];//link vdo
+        // $Location = $_POST['Location'];//link map
+        // $ID_Category1 = $_POST['ID_Category1']; //category1
+        // $ID_Category2 = $_POST['ID_Category2'];//category2
+        // $ID_Category3 = $_POST['ID_Category3'];//category3\
 
         //input image
-        $Images01 = $_FILES['Images01']['name'];     
-        $tmp_name01 = $_FILES['Images01']['tmp_name'];
-        $ImagePath01 = 'uploadimages/'.$Images01;
-        move_uploaded_file($tmp_name01,$ImagePath01);
+        // $Images01 = $_FILES['Images01']['name'];     
+        // $tmp_name01 = $_FILES['Images01']['tmp_name'];
+        // $ImagePath01 = 'uploadimages/'.$Images01;
+        // move_uploaded_file($tmp_name01,$ImagePath01);
 
         //input content
         $sql_content = " INSERT INTO content
