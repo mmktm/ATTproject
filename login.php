@@ -14,11 +14,11 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
 
             if($result_checklogin->num_rows == 1 ){
                 echo json_encode("Login Success"); 
-                while ($row_checklogin = $result_checklogin->fetch_assoc()){
-                    $output_checklogin[] = $row_checklogin ;
-                    $j_checklogin = json_encode($output_checklogin);
-                }
-                echo "$j_checklogin\n" ;
+                // while ($row_checklogin = $result_checklogin->fetch_assoc()){
+                //     $output_checklogin[] = $row_checklogin ;
+                //     $j_checklogin = json_encode($output_checklogin);
+                // }
+                // echo "$j_checklogin\n" ;
 
             }else{
                 echo json_encode("error");
