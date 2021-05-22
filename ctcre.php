@@ -35,9 +35,9 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
 
             $result_content = $link->query($sql_content);
                 if($result_content){
-                    echo "result_content is success \n"; }
+                    echo "success"; }
                 else{
-                    echo "result_content is false ".mysqli_error($link)."\n" ;
+                    echo "error".mysqli_error($link)."\n" ;
                 }
         
                 }
