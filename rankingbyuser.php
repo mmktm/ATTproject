@@ -27,10 +27,9 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
             while ($row_rankbyuser = $result_rankbyuser->fetch_assoc()){
                 $output_rankbyuser[] = $row_rankbyuser ;
                 $j_rankbyuser = json_encode($output_rankbyuser,JSON_NUMERIC_CHECK);
-                echo $row_rankbyuser['ID_User']."\n";
+                // echo $row_rankbyuser['ID_User']."\n";
             }
-            // echo $output_rankbyuser['ID_User'];
-            // echo "$j_rankbyuser\n" ;
+            echo "$j_rankbyuser\n" ;
 
         }
 
