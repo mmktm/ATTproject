@@ -5,16 +5,16 @@ header('content-type: application/json');
 error_reporting(0);
 error_reporting(E_ERROR | E_PARSE);
 // connect to mysql cloud
-$host = '35.240.165.55';
-$username = 'root' ;
-$pass = 'root1628';
-$table_database = 'pj-att';
-
-// connect to mysql cloud2
-// $host = '34.87.185.62';
+// $host = '35.240.165.55';
 // $username = 'root' ;
 // $pass = 'root1628';
-// $table_database = 'pjatt';
+// $table_database = 'pj-att';
+
+// connect to mysql cloud2
+$host = '34.87.185.62';
+$username = 'root' ;
+$pass = 'root1628';
+$table_database = 'pjatt';
 
 $link = mysqli_connect( $host , $username , $pass , $table_database );
 mysqli_set_charset($link,"utf8");
