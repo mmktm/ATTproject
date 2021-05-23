@@ -20,7 +20,7 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
 
         // Validate e-mail
         if (!filter_var($Email, FILTER_VALIDATE_EMAIL) === false) {
-            echo("$Email is a valid email address\n");
+            // echo("$Email is a valid email address\n");
                 
             $sql_checkregis = " SELECT * FROM `user` 
                                 WHERE Username = '$Username' OR Email = '$Email'" ;
@@ -28,7 +28,9 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
             $result_checkregis = $link->query($sql_checkregis);
 
             if($result_checkregis->num_rows == 1 ){
-                echo json_encode("error : username or email already exists"); 
+                // echo json_encode("error : username or email already exists"); 
+                echo json_encode("error"); 
+
             }else{
                 
                 $sql_insertregis = "INSERT INTO user (Username, Passwordd , Email, Status_User,Date_User,Time_User)
