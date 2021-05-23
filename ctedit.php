@@ -58,7 +58,7 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
                             if($result_slcontent){
                                 $row_slcontent = $result_slcontent->fetch_assoc();
                                 $output_slcontent[] = $row_slcontent ;
-                                $j_slcontent = json_encode($output_slcontent);
+                                $j_slcontent = json_encode($output_slcontent,JSON_NUMERIC_CHECK);
 
                                 echo $j_slcontent ;
                             } else{

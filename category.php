@@ -17,7 +17,7 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
                 } else {
                     while ($row_allcate = $result_allcate->fetch_assoc()){
                         $output_allcate[] = $row_allcate ;
-                        $j_allcate = json_encode($output_allcate);
+                        $j_allcate = json_encode($output_allcate,JSON_NUMERIC_CHECK);
                     }
                     echo "$j_allcate\n" ;
                 }

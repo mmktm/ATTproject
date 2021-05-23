@@ -31,7 +31,7 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
             } else {
                 while ($row_profile = $result_profile->fetch_assoc()){
                     $output_profile[] = $row_profile ;
-                    $j_profile = json_encode($output_profile);
+                    $j_profile = json_encode($output_profile,JSON_NUMERIC_CHECK);
                 }
                 echo "$j_profile\n" ;
             }
@@ -51,7 +51,7 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
             } else {
                 while ($row_following = $result_following->fetch_assoc()){
                     $output_following[] = $row_following ;
-                    $j_following = json_encode($output_following);
+                    $j_following = json_encode($output_following,JSON_NUMERIC_CHECK);
                 }
                 echo "$j_following\n" ;
             }
@@ -95,7 +95,7 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
             } else {
                 while ($row_contentof = $result_contentof->fetch_assoc()){
                     $output_contentof[] = $row_contentof ;
-                    $j_contentof = json_encode($output_contentof);
+                    $j_contentof = json_encode($output_contentof,JSON_NUMERIC_CHECK);
                     
                 }
                 echo "$j_contentof\n" ;

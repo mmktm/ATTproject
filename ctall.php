@@ -45,7 +45,7 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
                 } else {
                     while ($row_allcontent = $result_allcontent->fetch_assoc()){
                         $output_allcontent[] = $row_allcontent ;
-                        $j_allcontent = json_encode($output_allcontent);
+                        $j_allcontent = json_encode($output_allcontent,JSON_NUMERIC_CHECK);
                     }
                     echo "$j_allcontent\n" ;
                 }

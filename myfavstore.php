@@ -49,7 +49,7 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
         } else {
             while ($row_myfavstore = $result_myfavstore->fetch_assoc()){
                 $output_myfavstore[] = $row_myfavstore ;
-                $j_myfavstore = json_encode($output_myfavstore);
+                $j_myfavstore = json_encode($output_myfavstore,JSON_NUMERIC_CHECK);
             }
             echo "$j_myfavstore\n" ;
         }

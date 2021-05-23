@@ -49,7 +49,7 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
         } else {
             while ($row_rankbycategory = $result_rankbycategory->fetch_assoc()){
                 $output_rankbycategory[] = $row_rankbycategory ;
-                $j_rankbycategory = json_encode($output_rankbycategory);
+                $j_rankbycategory = json_encode($output_rankbycategory,JSON_NUMERIC_CHECK);
             }
             echo "$j_rankbycategory\n" ;
         }

@@ -18,7 +18,7 @@ if(isset($_POST['ID_Content']) && $_POST['ID_Content'] != '' ){
             if($result_shareshow){
                 $row_shareshow = $result_shareshow->fetch_assoc();
                 $output_shareshow[] = $row_shareshow ;
-                $j_shareshow = json_encode($output_shareshow);
+                $j_shareshow = json_encode($output_shareshow,JSON_NUMERIC_CHECK);
                 echo "$j_shareshow\n" ;
             }else{
                 echo "result_shareshow is false ".mysqli_error($link)."\n" ;

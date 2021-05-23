@@ -45,7 +45,7 @@ if(isset($_POST['ID_Content']) && $_POST['ID_Content'] != '' ){
         if($result_ctshow){
             $row_ctshow = $result_ctshow->fetch_assoc() ;
             $output_ctshow[] = $row_ctshow ;
-            $j_ctshow = json_encode($output_ctshow);
+            $j_ctshow = json_encode($output_ctshow,JSON_NUMERIC_CHECK);
             echo "$j_ctshow\n" ;
         } else {
             echo "result_ctshow is false ".mysqli_error($link)."\n" ;

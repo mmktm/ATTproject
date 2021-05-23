@@ -46,7 +46,7 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
         } else {
             while ($row_rankbyallct = $result_rankbyallct->fetch_assoc()){
                 $output_rankbyallct[] = $row_rankbyallct ;
-                $j_rankbyallct = json_encode($output_rankbyallct);
+                $j_rankbyallct = json_encode($output_rankbyallct,JSON_NUMERIC_CHECK);
             }
             echo "$j_rankbyallct\n" ;
         }

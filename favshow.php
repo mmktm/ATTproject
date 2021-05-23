@@ -18,7 +18,7 @@ if(isset($_POST['ID_Content']) && $_POST['ID_Content'] != '' ){
             if($result_favshow){
                 $row_favshow = $result_favshow->fetch_assoc();
                 $output_favshow[] = $row_favshow ;
-                $j_favshow = json_encode($output_favshow);
+                $j_favshow = json_encode($output_favshow,JSON_NUMERIC_CHECK);
                 echo "$j_favshow\n" ;
             }else{
                 echo "result_favshow is false ".mysqli_error($link)."\n" ;

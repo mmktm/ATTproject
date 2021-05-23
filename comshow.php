@@ -27,7 +27,7 @@ if(isset($_POST['ID_Content']) && $_POST['ID_Content'] != '' ){
         } else {
             while ($row_comshow = $result_comshow->fetch_assoc()){
                 $output_comshow[] = $row_comshow ;
-                $j_comshow = json_encode($output_comshow);
+                $j_comshow = json_encode($output_comshow,JSON_NUMERIC_CHECK);
             }
             echo "$j_comshow\n" ;
         }

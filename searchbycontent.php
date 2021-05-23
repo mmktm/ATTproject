@@ -42,7 +42,7 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
         } else {
             while ($row_searchbycontent = $result_searchbycontent->fetch_assoc()){
                 $output_searchbycontent[] = $row_searchbycontent ;
-                $j_searchbycontent = json_encode($output_searchbycontent);
+                $j_searchbycontent = json_encode($output_searchbycontent,JSON_NUMERIC_CHECK);
                 
             }
             echo "$j_searchbycontent\n" ;

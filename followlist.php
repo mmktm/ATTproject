@@ -27,7 +27,7 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
                 } else {
                     while ($row_followerlist = $result_followerlist->fetch_assoc()){
                         $output_followerlist[] = $row_followerlist ;
-                        $j_followerlist = json_encode($output_followerlist);
+                        $j_followerlist = json_encode($output_followerlist,JSON_NUMERIC_CHECK);
                     }
                     echo "$j_followerlist\n" ;
                 }

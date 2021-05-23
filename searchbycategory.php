@@ -46,7 +46,7 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
         } else {
             while ($row_searchbycategory = $result_searchbycategory->fetch_assoc()){
                 $output_searchbycategory[] = $row_searchbycategory ;
-                $j_searchbycategory = json_encode($output_searchbycategory);
+                $j_searchbycategory = json_encode($output_searchbycategory,JSON_NUMERIC_CHECK);
             }
             echo "$j_searchbycategory\n" ;
         }

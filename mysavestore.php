@@ -48,7 +48,7 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
         } else {
             while ($row_mysavestore = $result_mysavestore->fetch_assoc()){
                 $output_mysavestore[] = $row_mysavestore ;
-                $j_mysavestore = json_encode($output_mysavestore);
+                $j_mysavestore = json_encode($output_mysavestore,JSON_NUMERIC_CHECK);
             }
             echo "$j_mysavestore\n" ;
         }
