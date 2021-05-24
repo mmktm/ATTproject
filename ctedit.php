@@ -4,7 +4,6 @@ header('content-type: application/json'); //ใช้ข้อมูลแบบ
 include 'connect.php'; //เชื่อมต่อDATABASE cloud
 
     //ต้องรับมา 2 ค่า id-user and id-content
-
     //กดปุ่ม edit รับค่า ID_content ที่ต้องการ edit เข้ามา
     if(isset($_POST['ID_Contentedit']) && $_POST['ID_Contentedit'] != '') {
         
@@ -14,9 +13,7 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
         $Content = $_POST['Content'];//text
         $Link_VDO = $_POST['Link_VDO'];//link vdo
         $Location = $_POST['Location'];//link map
-        $ID_Category1 = $_POST['ID_Category1'];//idcategory1
-        $ID_Category2 = $_POST['ID_Category2'];//idcategory2
-        $ID_Category3 = $_POST['ID_Category3'];//idcategory3
+        $ID_Category = $_POST['ID_Category'];//idcategory
         //images
 
         //check iduser กับ idcontent ว่าตรงกันมั้ย
@@ -43,14 +40,10 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
                                             content.Images02,
                                             content.Images03,
                                             content.Images04,
-                                            cate1.Category AS Cate1,
-                                            cate2.Category AS Cate2,
-                                            cate3.Category AS Cate3
+                                            category.Category
                                         FROM
-                                        (((content INNER JOIN con_in_cate ON content.ID_Content = con_in_cate.ID_Content )
-                                                LEFT JOIN category cate1 ON con_in_cate.ID_Category1 = cate1.ID_Category )
-                                                LEFT JOIN category cate2 ON con_in_cate.ID_Category2 = cate2.ID_Category)
-                                                LEFT JOIN category cate3 ON con_in_cate.ID_Category3 = cate3.ID_Category  
+                                        content INNER JOIN con_in_cate ON content.ID_Content = con_in_cate.ID_Content
+                                                LEFT JOIN category ON con_in_cate.ID_Category = category.ID_Category
                                         WHERE
                                             content.ID_Content = '$ID_Contentedit' && content.Status_Content = 'Post' " ;
 
@@ -72,7 +65,7 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
                                             Content = '$Content',
                                             Link_VDO = '$Link_VDO',
                                             Location = '$Location'
-                                        WHERE content.ID_content = '$ID_Contentedit'  && content.Status_Content = 'Post' " ;
+                                        WHERE content.ID_Content = '$ID_Contentedit'  && content.Status_Content = 'Post' " ;
                 
                         $result_ctupdate = $link->query($sql_ctupdate);
 
@@ -85,10 +78,8 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
                     //category edit (update)
                     $sql_cateupdate = " UPDATE con_in_cate
                                         SET 
-                                            ID_Category1 = '$ID_Category1',
-                                            ID_Category2 = '$ID_Category2',
-                                            ID_Category3 = '$ID_Category3'
-                                        WHERE ID_content = '$ID_Contentedit' " ;
+                                            ID_Category = '$ID_Category'
+                                        WHERE ID_Content = '$ID_Contentedit' " ;
                         
                         $result_cateupdate = $link->query($sql_cateupdate);
 

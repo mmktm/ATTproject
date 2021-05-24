@@ -5,8 +5,8 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
 
 //code show data comment ของ content นั้นๆ
 //ใช้คู่กับไฟล์แสดงข้อมูลของบทความ
-//รับค่า ID_Content ($_POST['ID_Content'])
 
+//รับค่า ID_Content ($_POST['ID_Content']) และ ID_content ต้องไม่ใช่ค่าว่าง
 if(isset($_POST['ID_Content']) && $_POST['ID_Content'] != '' ){
 
     $idcontentcomshow = $_POST['ID_Content'] ;

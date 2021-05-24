@@ -11,7 +11,7 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
         $ID_Contentdl = $_POST['ID_Contentdl']; //idcontent
 
 
-        //check iduser กับ idcontent ว่าตรงกันมั้ย
+        //check iduser กับ idcontent ว่าiduserนี้เป็นเจ้าของcontentนี้จริงหรือเปล่า
         $sql_checkpost = " SELECT
                                 post.ID_User 
                             FROM

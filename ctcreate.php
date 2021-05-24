@@ -5,19 +5,17 @@ date_default_timezone_set('Asia/Bangkok');//timezone
 include 'connect.php'; //เชื่อมต่อDATABASE cloud
 
     //กดปุ่ม Post รับค่า ID_User เข้ามา
-    if(isset($_POST['ID_Userpost']) && $_POST['ID_Userpost'] != '') {
+    if(isset($_POST['ID_Userpost']) && $_POST['ID_Userpost'] != '') { //ค่านี้ต้องไม่ใช่ค่าว่าง
         
-        $Date_Content = date("Y-m-d") ;
-        $Time_Content = date("H:i:s") ;
+        $Date_Content = date("Y-m-d") ; //date
+        $Time_Content = date("H:i:s") ; //time
         $Status_Content = 'Post'; //status
         $ID_Userpost = $_POST['ID_Userpost']; //iduser
         $Title = $_POST['Title']; //title
         $Content = $_POST['Content'];//content
         $Link_VDO = $_POST['Link_VDO'];//link vdo
         $Location = $_POST['Location'];//link map
-        $ID_Category1 = $_POST['ID_Category1']; //category1
-        $ID_Category2 = $_POST['ID_Category2'];//category2
-        $ID_Category3 = $_POST['ID_Category3'];//category3\
+        $ID_Category = $_POST['ID_Category']; //category
 
         //input image
         $Images01 = $_FILES['Images01']['name'];     
@@ -53,6 +51,7 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
                     echo "result_content is false ".mysqli_error($link)."\n" ;
                 }
         
+        //input to category table
         //select idcontent ที่พึ่งเพิ่ม -> insert category to con_in_cate
         $sql_idcontent = " SELECT
                                 ID_Content
@@ -74,16 +73,17 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
 
                         //insert category to con_in_cate
                         $sql_con_in_cate = " INSERT INTO con_in_cate
-                                                (ID_Content , ID_Category1 , ID_Category2 , ID_Category3 )
+                                                (ID_Content , ID_Category)
                                             VALUES
-                                                ('$idcontent' , '$ID_Category1', '$ID_Category2', '$ID_Category3') "; 
+                                                ('$idcontent' , '$ID_Category') "; 
                     #echo $sql_con_in_cate;
                     $result_con_in_cate = $link->query($sql_con_in_cate);
                     // echo "result_con_in_cate is ".json_encode($result_con_in_cate);
                 } else {
                     echo "result_idcontent is false ".mysqli_error($link)."\n" ;
                 }
-
+        
+        //input to post table
         //select date_content ->insert data to table post
         $sql_datepost = " SELECT
                             Date_Content,

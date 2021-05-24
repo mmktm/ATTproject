@@ -8,7 +8,7 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
 //ต้องรับมา 3 ค่า ID_User ($_POST['idusercom']), ID_Content ($_POST['com']) and textcom = $_POST['textcom']
 
 //กดช่องcommentรับค่า ID_Content ที่ต้องการมา
-if(isset($_POST['com']) && $_POST['com'] != '' ){
+if(isset($_POST['com']) && $_POST['com'] != '' ){ //รับค่าตัวแปร com และ com ต้องไม่ใช่ค่าว่าง
 
     $idusercom = $_POST['idusercom'] ; //รับตัวแปรชื่อ  $_POST['idusercom'] เข้ามาเก็บไว้ใน $idusercom
     $idcontentcom = $_POST['com'] ;
@@ -31,7 +31,7 @@ if(isset($_POST['com']) && $_POST['com'] != '' ){
             
             //comdelete
             //รับค่า ID_Comment จากตัวแปร $_POST['comdelete'] อาจจะเป็นรูปถังขยะ
-            if(isset($_POST['comdelete']) && $_POST['comdelete'] != '' ){
+            if(isset($_POST['comdelete']) && $_POST['comdelete'] != '' ){ //รับค่าตัวแปร comdelete และ comdelete ต้องไม่ใช่ค่าว่าง
 
                 $idcomment = $_POST['comdelete'] ;
                 $statuscomdelete = '0';

@@ -18,6 +18,7 @@ if(isset($_POST['ID_Content']) && $_POST['ID_Content'] != '' ){
                         content.Date_Content,
                         content.Time_Content,
                         content.Title,
+                        category.Category,
                         content.Content,
                         content.Link_VDO,
                         content.Location,
@@ -25,18 +26,14 @@ if(isset($_POST['ID_Content']) && $_POST['ID_Content'] != '' ){
                         content.Images01,
                         content.Images02,
                         content.Images03,
-                        content.Images04,
-                        cate1.Category AS Cate1,
-                        cate2.Category AS Cate2,
-                        cate3.Category AS Cate3 
+                        content.Images04
+                        
                     FROM
-                        (((((( content
-                                LEFT JOIN con_in_cate ON content.ID_Content = con_in_cate.ID_Content )
-                                LEFT JOIN category cate1 ON con_in_cate.ID_Category1 = cate1.ID_Category )
-                                LEFT JOIN category cate2 ON con_in_cate.ID_Category2 = cate2.ID_Category )
-                                LEFT JOIN category cate3 ON con_in_cate.ID_Category3 = cate3.ID_Category )
-                                RIGHT JOIN post ON content.ID_Content = post.ID_Content )
-                                JOIN `user` ON post.ID_User = `user`.ID_User )
+                         content
+                                LEFT JOIN con_in_cate ON content.ID_Content = con_in_cate.ID_Content
+                                LEFT JOIN category ON con_in_cate.ID_Category = category.ID_Category
+                                RIGHT JOIN post ON content.ID_Content = post.ID_Content
+                                JOIN `user` ON post.ID_User = `user`.ID_User
                                 
                     WHERE
                         content.ID_Content = '$idcontentshow' && post.Status_Post = 'Post' " ;

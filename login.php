@@ -27,6 +27,7 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
 
             }else{
                 echo json_encode("error");
+                // echo "error ".mysqli_error($link)."\n" ;
             }
 
 mysqli_close($link);

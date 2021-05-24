@@ -8,7 +8,7 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
 //ต้องรับมา 2 ค่า ID_User ($_POST['iduserfav']) and ID_Content ($_POST['fav'])
 //เก็บค่า ID_Content ไว้ในตัวแปร fav
 
-if(isset($_POST['fav']) && $_POST['fav'] != '' ){
+if(isset($_POST['fav']) && $_POST['fav'] != '' ){ //รับตัวแปร fav และ fav ต้องไม่ใช่ค่าว่าง
 
     $iduserfav = $_POST['iduserfav'] ; //รับตัวแปรชื่อ  $_POST['iduserfav'] เข้ามาเก็บไว้ใน $iduserfav
     $idcontentfav = $_POST['fav'] ;
