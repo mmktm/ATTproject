@@ -10,20 +10,20 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
         
         //show datauser : ID_User,Date_User,Username,Status_User,Image,followers
         $sql_profile = " SELECT
-                            user.ID_User,
-                            user.Date_User,
-                            user.Time_User,
-                            user.Username,
-                            user.Status_User,
-                            user.Image,
-                            COUNT( follow.ID_Following ) AS followers
+                            `user`.ID_User,
+                            `user`.Username,
+                            `user`.Image,
+                            `user`.Status_User,
+                            SUM(CASE WHEN follow.ID_Following = $profile THEN 1 ELSE 0 END) AS follower,
+                            SUM(CASE WHEN follow.ID_User = $profile THEN 1 ELSE 0 END) AS following,
+                            `user`.Date_User,
+                            `user`.Email
                         FROM
-                            user
-                            JOIN follow ON user.ID_User = follow.ID_Following
+                            `follow`
+                            JOIN `user` ON `user`.ID_User = $profile
                         WHERE
-                            user.ID_User = $profile AND follow.Status_Follow = 1
-                        GROUP BY
-                            follow.Status_Follow " ;
+                            `follow`.ID_User = $profile
+                            OR follow.ID_Following = $profile " ;
 
             $result_profile = $link->query($sql_profile);
             if($result_profile->num_rows <=0 ){
@@ -37,24 +37,24 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
             }
         
         //following
-        $sql_following = " SELECT
-                                COUNT( ID_User ) AS following 
-                            FROM
-                                follow 
-                            WHERE
-                                ID_User = $profile 
-                                AND Status_Follow =1 " ;
+        // $sql_following = " SELECT
+        //                         COUNT( ID_User ) AS following 
+        //                     FROM
+        //                         follow 
+        //                     WHERE
+        //                         ID_User = $profile 
+        //                         AND Status_Follow =1 " ;
 
-            $result_following = $link->query($sql_following);
-            if($result_following->num_rows <=0 ){
-                echo "Not found this ID_user : $following " ;
-            } else {
-                while ($row_following = $result_following->fetch_assoc()){
-                    $output_following[] = $row_following ;
-                    $j_following = json_encode($output_following,JSON_NUMERIC_CHECK);
-                }
-                echo "$j_following\n" ;
-            }
+        //     $result_following = $link->query($sql_following);
+        //     if($result_following->num_rows <=0 ){
+        //         echo "Not found this ID_user : $following " ;
+        //     } else {
+        //         while ($row_following = $result_following->fetch_assoc()){
+        //             $output_following[] = $row_following ;
+        //             $j_following = json_encode($output_following,JSON_NUMERIC_CHECK);
+        //         }
+        //         echo "$j_following\n" ;
+        //     }
 
         //contentof เรียงลำดับจากid บทความ ล่าสุด
         $sql_contentof = " SELECT
