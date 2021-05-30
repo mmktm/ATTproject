@@ -13,9 +13,9 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
                         WHERE Email = '$Email' AND Passwordd = '$Passwordd'" ;
         
         $result_checklogin = $link->query($sql_checklogin);
-        $userdata = $result_checklogin->fetch_assoc();
+        $userdata = $result_checklogin->fetch_array();
 
-            if($userdate->num_rows == 1 ){
+            if($result_checklogin->num_rows == 1 ){
 
                 // $sql = "SELECT * FROM `user` 
                 //         WHERE Email = '$Email'";
