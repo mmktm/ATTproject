@@ -15,12 +15,12 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
         $result_checklogin = $link->query($sql_checklogin);
         $userdata = $result_checklogin->fetch_assoc();
 
-            if($result_checklogin->num_rows == 1 ){
+            if($userdate->num_rows == 1 ){
 
-                $sql = "SELECT * FROM `user` 
-                        WHERE Email = '$Email'";
-                $result = $link->query($sql);
-                $userdata = mysqli_fetch_array($result);
+                // $sql = "SELECT * FROM `user` 
+                //         WHERE Email = '$Email'";
+                // $result = $link->query($sql);
+                // $userdata = mysqli_fetch_array($result);
 
                 // echo json_encode("Success");
                 echo json_encode($userdata,JSON_NUMERIC_CHECK);
