@@ -17,8 +17,16 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
 
             if($result_checklogin->num_rows == 1 ){
 
-                echo json_encode("Success");
-                // echo json_encode($userdata,JSON_NUMERIC_CHECK);
+                $sql = "SELECT * FROM `user` 
+                        WHERE Email = '$Email'";
+                $result = $link->query($sql);
+                $userdata = mysqli_fetch_array($result);
+
+                // echo json_encode("Success");
+                echo json_encode($userdata,JSON_NUMERIC_CHECK);
+                // echo json_encode($userdata);
+
+
 
                 // while ($row_checklogin = $result_checklogin->fetch_assoc()){
                 //     $output_checklogin[] = $row_checklogin ;
