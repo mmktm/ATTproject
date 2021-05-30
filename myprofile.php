@@ -22,8 +22,8 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
                             `follow`
                             JOIN `user` ON `user`.ID_User = $profile
                         WHERE
-                            `follow`.ID_User = $profile
-                            OR follow.ID_Following = $profile " ;
+                            ( `follow`.ID_User = $profile OR follow.ID_Following = $profile ) 
+                            AND follow.Status_Follow = '1' " ;
 
             $result_profile = $link->query($sql_profile);
             if($result_profile->num_rows <=0 ){
