@@ -37,16 +37,27 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
 
             $result_alluser = $link->query($sql_alluser);
             if($result_alluser->num_rows <=0 ){
-                echo "Not found\n" ;
+                echo "No user\n" ;
             } else {
                 while ($row_alluser = $result_alluser->fetch_assoc()){
+                    // $output_alluser[] = $row_alluser ;
+                    // $j_alluser = json_encode($output_alluser,JSON_NUMERIC_CHECK);
+                    
+                    $follower = $row_alluser['follower']; //data follower
+                    $following = $row_alluser['following'];
+                    // echo $follower."\n"; //จำนวน follower
+                    if( ($follower==null) or ($following==null) ){ //ถ้าfollower or following have null
+                        $follower = 0 ;
+                        $following = 0 ;
+                        $row_alluser['follower'] = $follower ;
+                        $row_alluser['following'] = $following ;
+                    }
                     $output_alluser[] = $row_alluser ;
                     $j_alluser = json_encode($output_alluser,JSON_NUMERIC_CHECK);
                 }
             }
         }
         echo "$j_alluser\n" ; //นอกลูป
-         
     }
     mysqli_close($link);
 ?> 
