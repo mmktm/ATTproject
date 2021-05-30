@@ -17,8 +17,9 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
 
             if($result_checklogin->num_rows == 1 ){
 
-                echo json_encode("Login Success");
-                echo json_encode($userdata,JSON_NUMERIC_CHECK);
+                echo json_encode("Success");
+                // echo json_encode($userdata,JSON_NUMERIC_CHECK);
+
                 // while ($row_checklogin = $result_checklogin->fetch_assoc()){
                 //     $output_checklogin[] = $row_checklogin ;
                 //     $j_checklogin = json_encode($output_checklogin);
