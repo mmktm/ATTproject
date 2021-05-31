@@ -30,6 +30,18 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
                 echo "Not found this ID_user : $profile " ;
             } else {
                 while ($row_profile = $result_profile->fetch_assoc()){
+                    // $output_profile[] = $row_profile ;
+                    // $j_profile = json_encode($output_profile,JSON_NUMERIC_CHECK);
+                    
+                    $follower = $row_profile['follower']; //data follower
+                    $following = $row_profile['following'];
+                    // echo $follower."\n"; //จำนวน follower
+                    if( ($follower==null) or ($following==null) ){ //ถ้าfollower or following have null
+                        $follower = 0 ;
+                        $following = 0 ;
+                        $row_profile['follower'] = $follower ;
+                        $row_profile['following'] = $following ;
+                    }
                     $output_profile[] = $row_profile ;
                     $j_profile = json_encode($output_profile,JSON_NUMERIC_CHECK);
                 }
@@ -88,12 +100,11 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
 
             $result_contentof = $link->query($sql_contentof);
             if($result_contentof->num_rows <=0 ){
-                echo "Not found this ID_user : $contentof " ;
+                echo json_encode("No Content Data");
             } else {
                 while ($row_contentof = $result_contentof->fetch_assoc()){
                     $output_contentof[] = $row_contentof ;
                     $j_contentof = json_encode($output_contentof,JSON_NUMERIC_CHECK);
-                    
                 }
                 echo "$j_contentof\n" ;
             }

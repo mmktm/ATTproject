@@ -8,8 +8,8 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
     $Username = $_POST['Username'];
     $Passwordd = $_POST['Passwordd'];
     $Email = $_POST['Email'];
-    $Date_User = date("Y-m-d") ;
-    $Time_User = date("H:i:s") ;
+    $Date_Admin = date("Y-m-d") ;
+    $Time_Admin = date("H:i:s") ;
 
         // Variable to check
         // $Email = "john.doe@example.com";

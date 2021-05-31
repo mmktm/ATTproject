@@ -26,8 +26,7 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
                 echo json_encode($userdata,JSON_NUMERIC_CHECK);
                 // echo json_encode($userdata);
 
-
-
+                //แบบเดิม
                 // while ($row_checklogin = $result_checklogin->fetch_assoc()){
                 //     $output_checklogin[] = $row_checklogin ;
                 //     $j_checklogin = json_encode($output_checklogin);
