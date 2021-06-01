@@ -14,10 +14,12 @@ if(isset($_GET['totalcontent'])) {
         echo "No content\n" ;
     } else {
         while ($row_totalcontent = $result_totalcontent->fetch_assoc()){
-        $output_totalcontent[] = $row_totalcontent ;
-        $j_totalcontent = json_encode($output_totalcontent,JSON_NUMERIC_CHECK);
+        // $output_totalcontent[] = $row_totalcontent ;
+        // $j_totalcontent = json_encode($output_totalcontent,JSON_NUMERIC_CHECK);
+        $totalct = $row_totalcontent['totalcontent'];
         }
-        echo $j_totalcontent;
+        echo json_encode($totalct,JSON_NUMERIC_CHECK); //แค่ตัวเลข
+        // echo $j_totalcontent;
     }
 }
 mysqli_close($link);
