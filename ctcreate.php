@@ -15,6 +15,7 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
         $Content = $_POST['Content'];//content
         $Link_VDO = $_POST['Link_VDO'];//link vdo
         $Location = $_POST['Location'];//link map
+        $Counterread = "0"; //default read = 0
         $ID_Category = $_POST['ID_Category']; //category
 
         //input image
@@ -40,9 +41,9 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
         
         //input content
         $sql_content = " INSERT INTO content
-                          (Date_Content,Time_Content,Status_Content, Title, Content, Link_VDO, Location,Images01,Images02,Images03,Images04)
+                          (Date_Content,Time_Content,Status_Content, Title, Content, Link_VDO, Location,Counter_Read,Images01,Images02,Images03,Images04)
                          VALUES
-                          ('$Date_Content','$Time_Content','$Status_Content', '$Title', '$Content', '$Link_VDO', '$Location','$Images01','$Images02','$Images03','$Images04' ) " ;
+                          ('$Date_Content','$Time_Content','$Status_Content', '$Title', '$Content', '$Link_VDO', '$Location','$Counterread','$Images01','$Images02','$Images03','$Images04' ) " ;
 
             $result_content = $link->query($sql_content);
                 if($result_content){
