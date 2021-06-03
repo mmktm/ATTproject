@@ -70,45 +70,45 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
         //     }
 
         //contentof เรียงลำดับจากid บทความ ล่าสุด
-        $sql_contentof = " SELECT
-                                `user`.ID_User,
-                                `user`.Username,
-                                post.Status_Post,
-                                content.ID_Content,
-                                content.Date_Content,
-                                content.Time_Content,
-                                content.Title,
-                                category.Category,
-                                content.Content,
-                                content.Link_VDO,
-                                content.Location,
-                                content.Counter_Read,
-                                content.Images01,
-                                content.Images02,
-                                content.Images03,
-                                content.Images04
+        // $sql_contentof = " SELECT
+        //                         `user`.ID_User,
+        //                         `user`.Username,
+        //                         post.Status_Post,
+        //                         content.ID_Content,
+        //                         content.Date_Content,
+        //                         content.Time_Content,
+        //                         content.Title,
+        //                         category.Category,
+        //                         content.Content,
+        //                         content.Link_VDO,
+        //                         content.Location,
+        //                         content.Counter_Read,
+        //                         content.Images01,
+        //                         content.Images02,
+        //                         content.Images03,
+        //                         content.Images04
                                 
-                            FROM
-                                (((( content
-                                    LEFT JOIN con_in_cate ON content.ID_Content = con_in_cate.ID_Content )
-                                    LEFT JOIN category ON con_in_cate.ID_Category = category.ID_Category )
-                                    RIGHT JOIN post ON content.ID_Content = post.ID_Content )
-                                    JOIN `user` ON post.ID_User = `user`.ID_User )
-                            WHERE
-                                post.ID_User = $profile && content.Status_Content = 'Post'
-                            ORDER BY
-                                content.ID_Content DESC" ;
+        //                     FROM
+        //                         (((( content
+        //                             LEFT JOIN con_in_cate ON content.ID_Content = con_in_cate.ID_Content )
+        //                             LEFT JOIN category ON con_in_cate.ID_Category = category.ID_Category )
+        //                             RIGHT JOIN post ON content.ID_Content = post.ID_Content )
+        //                             JOIN `user` ON post.ID_User = `user`.ID_User )
+        //                     WHERE
+        //                         post.ID_User = $profile && content.Status_Content = 'Post'
+        //                     ORDER BY
+        //                         content.ID_Content DESC" ;
 
-            $result_contentof = $link->query($sql_contentof);
-            if($result_contentof->num_rows <=0 ){
-                echo json_encode("No Content Data");
-            } else {
-                while ($row_contentof = $result_contentof->fetch_assoc()){
-                    $output_contentof[] = $row_contentof ;
-                    $j_contentof = json_encode($output_contentof,JSON_NUMERIC_CHECK);
-                }
-                echo "$j_contentof\n" ;
-            }
+        //     $result_contentof = $link->query($sql_contentof);
+        //     if($result_contentof->num_rows <=0 ){
+        //         echo json_encode("No Content Data");
+        //     } else {
+        //         while ($row_contentof = $result_contentof->fetch_assoc()){
+        //             $output_contentof[] = $row_contentof ;
+        //             $j_contentof = json_encode($output_contentof,JSON_NUMERIC_CHECK);
+        //         }
+        //         echo "$j_contentof\n" ;
+        //     }
     }
     mysqli_close($link);
 ?>
