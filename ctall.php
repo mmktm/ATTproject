@@ -19,10 +19,10 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
                                 content.Link_VDO,
                                 content.Location,
                                 content.Counter_Read,
-                                content.Images01
-                                -- content.Images02,
-                                -- content.Images03,
-                                -- content.Images04,
+                                content.Images01,
+                                content.Images02,
+                                content.Images03,
+                                content.Images04
                                 
                             FROM
                                 (((( content

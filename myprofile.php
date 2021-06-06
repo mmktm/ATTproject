@@ -49,7 +49,7 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
                 echo "$j_profile\n" ;
             }
         
-        //following
+        //following ไม่ได้ใช้
         // $sql_following = " SELECT
         //                         COUNT( ID_User ) AS following 
         //                     FROM
