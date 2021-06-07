@@ -95,7 +95,7 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
         //                             RIGHT JOIN post ON content.ID_Content = post.ID_Content )
         //                             JOIN `user` ON post.ID_User = `user`.ID_User )
         //                     WHERE
-        //                         post.ID_User = $profile && content.Status_Content = 'Post'
+        //                         post.ID_User = $profile && post.Status_Post = 'Post'
         //                     ORDER BY
         //                         content.ID_Content DESC" ;
 

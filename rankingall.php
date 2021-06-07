@@ -10,28 +10,51 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
 		//$rankbyallct = $_GET['rankbyallct'];
         
         $sql_rankbyallct = " SELECT
-                                    content.Counter_Read,
-                                    content.ID_Content,
-                                    content.Date_Content,
-                                    content.Time_Content,
-                                    content.Status_Content,
-                                    content.Title,
-                                    content.Content,
-                                    content.Link_VDO,
-                                    content.Location,
-                                    content.Images01,
-                                    content.Images02,
-                                    content.Images03,
-                                    content.Images04,
-                                    con_in_cate.ID_Category,
-                                    category.Category
+        -- //                             content.Counter_Read,
+        -- //                             content.ID_Content,
+        -- //                             content.Date_Content,
+        -- //                             content.Time_Content,
+        -- //                             content.Status_Content,
+        -- //                             content.Title,
+        -- //                             content.Content,
+        -- //                             content.Link_VDO,
+        -- //                             content.Location,
+        -- //                             content.Images01,
+        -- //                             content.Images02,
+        -- //                             content.Images03,
+        -- //                             content.Images04,
+        -- //                             con_in_cate.ID_Category,
+        -- //                             category.Category
                                     
-                                FROM
-                                    content 
-                                    LEFT JOIN con_in_cate ON content.ID_Content = con_in_cate.ID_Content
-                                    LEFT JOIN category ON con_in_cate.ID_Category = category.ID_Category
+        -- //                         FROM
+        -- //                             content 
+        -- //                             LEFT JOIN con_in_cate ON content.ID_Content = con_in_cate.ID_Content
+        -- //                             LEFT JOIN category ON con_in_cate.ID_Category = category.ID_Category
+                                `user`.ID_User,
+                                `user`.Username,
+                                post.Status_Post,
+                                content.ID_Content,
+                                content.Date_Content,
+                                content.Time_Content,
+                                content.Title,
+                                category.Category,
+                                content.Content,
+                                content.Link_VDO,
+                                content.Location,
+                                content.Counter_Read,
+                                content.Images01,
+                                content.Images02,
+                                content.Images03,
+                                content.Images04
+                                
+                            FROM
+                                (((( content
+                                    LEFT JOIN con_in_cate ON content.ID_Content = con_in_cate.ID_Content )
+                                    LEFT JOIN category ON con_in_cate.ID_Category = category.ID_Category )
+                                    RIGHT JOIN post ON content.ID_Content = post.ID_Content )
+                                    JOIN `user` ON post.ID_User = `user`.ID_User )
                                 WHERE
-                                     content.Status_Content = 'Post'
+                                    post.Status_Post = 'Post'
                                 ORDER BY
 	                                content.Counter_Read DESC   
                                     LIMIT 10 " ;
