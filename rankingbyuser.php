@@ -9,6 +9,7 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
         $sql_rankbyuser = " SELECT
                                 `user`.ID_User,
                                 `user`.Username,
+                                `user`.Image,
                                 SUM( content.Counter_Read ) AS sumread 
                             FROM
                                 post
