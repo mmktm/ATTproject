@@ -13,7 +13,9 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
         $Content = $_POST['Content'];//text
         $Link_VDO = $_POST['Link_VDO'];//link vdo
         $Location = $_POST['Location'];//link map
-        $ID_Category = $_POST['ID_Category'];//idcategory
+        $ID_Category = $_POST['ID_Category'];//idcategory ที่ต้องการเปลี่ยน
+        $ID_Category2 = $_POST['ID_Category2'];
+        $ID_Category3 = $_POST['ID_Category3'];
         //images
 
         //check iduser กับ idcontent ว่าตรงกันมั้ย
@@ -33,17 +35,22 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
                     //select content
                     $sql_slcontent = " SELECT
                                             content.Title,
+                                            cate.Category AS cate,
+                                            cate2.Category AS cate2,
+                                            cate3.Category AS cate3,
                                             content.Content,
                                             content.Link_VDO,
                                             content.Location,
                                             content.Images01,
                                             content.Images02,
                                             content.Images03,
-                                            content.Images04,
-                                            category.Category
+                                            content.Images04
                                         FROM
-                                        content INNER JOIN con_in_cate ON content.ID_Content = con_in_cate.ID_Content
-                                                LEFT JOIN category ON con_in_cate.ID_Category = category.ID_Category
+                                            content 
+                                            INNER JOIN con_in_cate ON content.ID_Content = con_in_cate.ID_Content
+                                            LEFT JOIN category cate ON con_in_cate.ID_Category = cate.ID_Category
+                                            LEFT JOIN category cate2 ON con_in_cate.ID_Category2 = cate2.ID_Category
+                                            LEFT JOIN category cate3 ON con_in_cate.ID_Category3 = cate3.ID_Category
                                         WHERE
                                             content.ID_Content = '$ID_Contentedit' && content.Status_Content = 'Post' " ;
 
@@ -79,8 +86,11 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
                     //category edit (update)
                     $sql_cateupdate = " UPDATE con_in_cate
                                         SET 
-                                            ID_Category = '$ID_Category'
-                                        WHERE ID_Content = '$ID_Contentedit' " ;
+                                            ID_Category = '$ID_Category',
+                                            ID_Category2 = '$ID_Category2',
+                                            ID_Category3 = '$ID_Category3'
+                                        WHERE 
+                                            ID_Content = '$ID_Contentedit' " ;
                         
                         $result_cateupdate = $link->query($sql_cateupdate);
 
