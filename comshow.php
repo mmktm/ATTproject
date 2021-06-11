@@ -13,7 +13,9 @@ if(isset($_POST['ID_Content']) && $_POST['ID_Content'] != '' ){
 
     $sql_comshow = " SELECT 
                         `comment`.ID_Comment,
+                        `user`.ID_User,
                         `user`.Username,
+                        `user`.Image,
                         `comment`.Comment,
                         `comment`.Date_Comment,
                         `comment`.Time_Comment 
