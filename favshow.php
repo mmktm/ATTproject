@@ -17,12 +17,14 @@ if(isset($_POST['ID_Content']) && $_POST['ID_Content'] != '' ){
         $result_favshow = $link->query($sql_favshow);
             if($result_favshow){
                 $row_favshow = $result_favshow->fetch_assoc();
-                $output_favshow[] = $row_favshow ;
-                $j_favshow = json_encode($output_favshow,JSON_NUMERIC_CHECK);
-                echo "$j_favshow\n" ;
+                // $output_favshow[] = $row_favshow ;
+                // $j_favshow = json_encode($output_favshow,JSON_NUMERIC_CHECK);
+                // echo "$j_favshow\n" ;
+
+                $totalfav = $row_favshow['fav'];
             }else{
                 echo "result_favshow is false ".mysqli_error($link)."\n" ;
-            }       
+            }echo json_encode($totalfav,JSON_NUMERIC_CHECK)."\n";
 }
 
 mysqli_close($link);

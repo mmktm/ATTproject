@@ -16,7 +16,10 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
                                     -- follow.Date_Follow,
                                     -- `user`.Username,
                                     -- `user`.Status_User
-                                    `user`.Username
+                                    `user`.ID_User,
+                                    `user`.Username,
+                                    `user`.Image
+
                                 FROM 
                                     follow JOIN `user` ON `user`.ID_User = follow.ID_User
                                     WHERE follow.Status_Follow = '1' && `user`.Status_User = 'Active' && follow.ID_Following = '$iduser'" ;
@@ -46,7 +49,9 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
                                 -- follow.Date_Follow,
                                 -- `user`.Username,
                                 -- `user`.Status_User
-                                `user`.Username
+                                    `user`.ID_User,
+                                    `user`.Username,
+                                    `user`.Image
                             FROM 
                                 follow JOIN `user` ON `user`.ID_User = follow.ID_Following
                                 WHERE follow.Status_Follow = '1' && `user`.Status_User = 'Active' && follow.ID_User = '$iduser'" ;

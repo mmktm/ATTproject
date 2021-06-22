@@ -13,6 +13,7 @@ if(isset($_POST['ID_Content']) && $_POST['ID_Content'] != '' ){
     $sql_ctshow = " SELECT 
                         `user`.ID_User,
                         `user`.Username,
+                        `user`.Image,
                         post.Status_Post,
                         content.ID_Content,
                         content.Date_Content,
