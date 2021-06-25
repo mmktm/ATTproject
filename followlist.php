@@ -62,7 +62,7 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
             } else {
                 while ($row_followinglist = $result_followinglist->fetch_assoc()){
                     $output_followinglist[] = $row_followinglist ;
-                    $j_followinglist = json_encode($output_followinglist);
+                    $j_followinglist = json_encode($output_followinglist,JSON_NUMERIC_CHECK);
                 }
                 echo "$j_followinglist\n" ;
             }
