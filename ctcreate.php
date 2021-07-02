@@ -95,6 +95,8 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
                             ID_Content = '$idcontent' && Status_Content = 'Post' " ;
 
             $result_datepost = $link->query($sql_datepost);
+
+            //เพิ่มตรงนี้เก็บค่าชื่อ username
                 if($result_datepost){
                     $row_datepost = $result_datepost->fetch_assoc();
                     $datepost = $row_datepost['Date_Content'];
