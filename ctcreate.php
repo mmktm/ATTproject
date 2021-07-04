@@ -24,7 +24,7 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
         $ImagePath01 = 'uploadimages/'.$Images01;
         move_uploaded_file($tmp_name01,$ImagePath01);
 
-        $Images02 = $_FILES['Images02']['name'];     
+        $Images02 = $_FILES['Images02']['name'];
         $tmp_name02 = $_FILES['Images02']['tmp_name'];
         $ImagePath02 = 'uploadimages/'.$Images02;
         move_uploaded_file($tmp_name02,$ImagePath02);
@@ -96,18 +96,30 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
 
             $result_datepost = $link->query($sql_datepost);
 
-            //เพิ่มตรงนี้เก็บค่าชื่อ username
-                if($result_datepost){
+        //เพิ่มตรงนี้เก็บค่าชื่อ username
+        $sql_author = " SELECT
+                            Username 
+                        FROM
+                            `user` 
+                        WHERE
+                            ID_User = '1'";
+            $result_author = $link->query($sql_author);
+
+                if($result_datepost && $result_author){
+
                     $row_datepost = $result_datepost->fetch_assoc();
                     $datepost = $row_datepost['Date_Content'];
                     $timepost = $row_datepost['Time_Content'];
                     // echo $datepost;
+                    $row_author = $result_author->fetch_assoc();
+                    $author = $row_author['Username'];
+                    
 
                     //insert data to post
                     $sql_post = "INSERT INTO post
-                                    ( ID_User, ID_Content, Status_Post, Date_Post ,Time_Post)
+                                    ( ID_User, Username, ID_Content, Status_Post, Date_Post ,Time_Post)
                                  VALUES
-                                    ('$ID_Userpost','$idcontent','$Status_Content','$datepost','$timepost')" ;
+                                    ('$ID_Userpost','$author','$idcontent','$Status_Content','$datepost','$timepost')" ;
                         $result_post = $link->query($sql_post);
                         // echo "\n result_post is ".json_encode($result_post);
                 } else {

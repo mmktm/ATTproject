@@ -11,8 +11,8 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
         
         //iduser,username,statusfav,datefav,idcontent,datecontent,namecontent,image1,namecate
         $sql_myfavstore = " SELECT 
-                                `user`.ID_User,
-                                `user`.Username,
+                                -- `user`.ID_User,
+                                -- `user`.Username,
                                 favorite.Status_Fav,
 	                            favorite.Date_Fav,
                                 favorite.Time_Fav,
