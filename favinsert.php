@@ -13,8 +13,8 @@ if(isset($_POST['fav']) && $_POST['fav'] != '' ){ //รับตัวแปร 
     $iduserfav = $_POST['iduserfav'] ; //รับตัวแปรชื่อ  $_POST['iduserfav'] เข้ามาเก็บไว้ใน $iduserfav
     $idcontentfav = $_POST['fav'] ;
     $statusfav = '1';
-    $Date_Fav = date("Y-m-d") ;
-    $Time_Fav = date("H:i:s") ;
+    $Date_fav = date("Y-m-d") ;
+    $Time_fav = date("H:i:s") ;
 
     $sql_checkfav = " SELECT ID_User,ID_Content,Status_Fav 
                         FROM favorite 
@@ -41,7 +41,7 @@ if(isset($_POST['fav']) && $_POST['fav'] != '' ){ //รับตัวแปร 
 
             //fav
             $sql_fav = " INSERT INTO favorite ( ID_User, ID_Content, Status_Fav,Date_Fav,Time_Fav )
-                        VALUES ('$iduserfav','$idcontentfav','$statusfav','$Date_Fav','$Time_Fav')" ; //เก็บค่าการกดfav
+                        VALUES ('$iduserfav','$idcontentfav','$statusfav','$Date_fav','$Time_fav')" ; //เก็บค่าการกดfav
 
                 $result_fav = $link->query($sql_fav);
 
