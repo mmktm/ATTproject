@@ -16,6 +16,10 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
         $Link_VDO = $_POST['Link_VDO'];//link vdo
         $Location = $_POST['Location'];//link map
         $Counterread = "0"; //default read = 0
+        $Totalfav = "0"; //default = 0
+        $Totalcom = "0"; //default = 0
+        $Totalshare = "0"; //default = 0
+        $Totalsave = "0"; //default = 0
         $ID_Category = $_POST['ID_Category']; //category
 
         //input image
@@ -41,9 +45,11 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
         
         //input content
         $sql_content = " INSERT INTO content
-                          (Date_Content,Time_Content,Status_Content, Title, Content, Link_VDO, Location,Counter_Read,Images01,Images02,Images03,Images04)
+                          (Date_Content,Time_Content,Status_Content, Title, Content, Link_VDO, Location,
+                           Counter_Read,Images01,Images02,Images03,Images04,Total_Fav,Total_Com,Total_Share,Total_Save)
                          VALUES
-                          ('$Date_Content','$Time_Content','$Status_Content', '$Title', '$Content', '$Link_VDO', '$Location','$Counterread','$Images01','$Images02','$Images03','$Images04' ) " ;
+                          ('$Date_Content','$Time_Content','$Status_Content', '$Title', '$Content', '$Link_VDO', '$Location',
+                           '$Counterread','$Images01','$Images02','$Images03','$Images04','$Totalfav','$Totalcom','$Totalshare','$Totalsave') " ;
 
             $result_content = $link->query($sql_content);
                 if($result_content){
@@ -68,7 +74,7 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
             $result_idcontent = $link->query($sql_idcontent);
                 if($result_idcontent){
                     $row_idcontent = $result_idcontent->fetch_assoc();//assocเลือกค่าเดียว
-                    $idcontent = $row_idcontent['ID_Content'] ;//ค่า idcontent ที่ select ได้
+                    $idcontent = $row_idcontent['ID_Content'] ;//ค่า idcontent ที่ select ได้ use with sqldatepost
                     // var_dump($idcontent);
                     // echo $idcontent ;
 
@@ -96,13 +102,13 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
 
             $result_datepost = $link->query($sql_datepost);
 
-        //เพิ่มตรงนี้เก็บค่าชื่อ username
+        //เพิ่มตรงนี้เก็บค่าชื่อ usernameauthor
         $sql_author = " SELECT
                             Username 
                         FROM
                             `user` 
                         WHERE
-                            ID_User = '1'";
+                            ID_User = '$ID_Userpost'";
             $result_author = $link->query($sql_author);
 
                 if($result_datepost && $result_author){
