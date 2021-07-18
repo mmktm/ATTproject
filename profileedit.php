@@ -8,9 +8,11 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
         
         $ID_User = $_POST['ID_User']; //iduser
         $Username = $_POST['Username'];
-        $Image = $_FILES['Image']['name'];     
+
+        $Image = $_FILES['Image']['name'];
+        $ImagePath = "uploadimages/".$Image;    
         $tmp_name = $_FILES['Image']['tmp_name'];
-        $ImagePath = "uploadimages/".$Image;
+        
         move_uploaded_file($tmp_name,$ImagePath);
         
                     //Profile edit (update)
