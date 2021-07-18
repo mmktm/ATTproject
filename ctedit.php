@@ -14,7 +14,27 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
         $Link_VDO = $_POST['Link_VDO'];//link vdo
         $Location = $_POST['Location'];//link map
         $ID_Category = $_POST['ID_Category'];//idcategory
-        //images
+
+        //input image
+        $Images01 = $_FILES['Images01']['name'];     
+        $tmp_name01 = $_FILES['Images01']['tmp_name'];
+        $ImagePath01 = 'uploadimages/'.$Images01;
+        move_uploaded_file($tmp_name01,$ImagePath01);
+
+        $Images02 = $_FILES['Images02']['name'];
+        $tmp_name02 = $_FILES['Images02']['tmp_name'];
+        $ImagePath02 = 'uploadimages/'.$Images02;
+        move_uploaded_file($tmp_name02,$ImagePath02);
+
+        $Images03 = $_FILES['Images03']['name'];     
+        $tmp_name03 = $_FILES['Images03']['tmp_name'];
+        $ImagePath03 = 'uploadimages/'.$Images03;
+        move_uploaded_file($tmp_name03,$ImagePath03);
+
+        $Images04 = $_FILES['Images04']['name'];     
+        $tmp_name04 = $_FILES['Images04']['tmp_name'];
+        $ImagePath04 = 'uploadimages/'.$Images04;
+        move_uploaded_file($tmp_name04,$ImagePath04);
 
         //check iduser กับ idcontent ว่าตรงกันมั้ย
         $sql_checkpost = "SELECT
@@ -64,7 +84,12 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
                                             Title = '$Title',
                                             Content = '$Content',
                                             Link_VDO = '$Link_VDO',
-                                            Location = '$Location'
+                                            Location = '$Location',
+                                            Images01 = '$Images01',
+                                            Images02 = '$Images02',
+                                            Images03 = '$Images03',
+                                            Images04 = '$Images04'
+
                                         WHERE
                                             content.ID_Content = '$ID_Contentedit'  && content.Status_Content = 'Post' " ;
                 
