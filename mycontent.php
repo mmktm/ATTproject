@@ -27,7 +27,11 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
                                 content.Images01,
                                 content.Images02,
                                 content.Images03,
-                                content.Images04
+                                content.Images04,
+                                content.Total_Fav,
+                                content.Total_Com,
+                                content.Total_Save,
+                                content.Total_Share
                                 
                             FROM
                                 (((( content
