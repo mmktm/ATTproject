@@ -41,10 +41,11 @@ if(isset($_POST['ID_User']) && $_POST['ID_User'] != '') {
             $response->message = "File uploaded failed";
             
         }
-    }else{
-        $response->status = false;
-        $response->message = "File uploaded failed";
     }
+    // else{
+    //     $response->status = false;
+    //     $response->message = "File uploaded failed";
+    // }
 }
 
 echo json_encode($response);
