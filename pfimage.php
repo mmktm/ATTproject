@@ -15,7 +15,7 @@ if(isset($_POST['ID_User']) && $_POST['ID_User'] != '') {
         
     $ID_User = $_POST['ID_User']; //iduser
 
-    $destination_dir = __DIR__."/avatar/";
+    $destination_dir = "./avatar/";
     $base_filename = basename($_FILES["file"]["name"]);
     $target_file = $destination_dir.$base_filename;
 
