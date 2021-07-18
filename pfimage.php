@@ -38,7 +38,7 @@ if(isset($_POST['ID_User']) && $_POST['ID_User'] != '') {
                     }
         }else{
             $response->status = false;
-            $response->message = "File uploaded failed";
+            $response->message = "File uploaded failed".$_FILES["file"]["error"];
             
         }
     }
