@@ -10,7 +10,7 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
         $Username = $_POST['Username'];
 
         $Image = $_FILES['Image']['name'];
-        $ImagePath = "uploadimages/".$Image; 
+        $ImagePath = "avatar/".$Image; 
         $tmp_name = $_FILES['Image']['tmp_name'];
         
         move_uploaded_file($tmp_name,$ImagePath);
