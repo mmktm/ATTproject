@@ -12,7 +12,7 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
 
         $result_reportshow = $link->query($sql_reportshow);
         if($result_reportshow->num_rows <=0 ){
-            echo "บทความนี้ไม่ถูก report" ;
+            echo "no report" ;
         } else {
             while ($row_reportshow = $result_reportshow->fetch_assoc()){
                 $output_reportshow[] = $row_reportshow ;
