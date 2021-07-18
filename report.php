@@ -11,6 +11,7 @@ if(isset($_POST['report']) && $_POST['report'] != '' ){
 
     $iduser = $_POST['iduser'] ; //รับตัวแปรชื่อ  $_POST['iduser'] เข้ามาเก็บไว้ใน $iduser
     $idcontentreport = $_POST['report'] ;
+    $statementrp = $_POST['statement'] ;
     $statusreport = '1';
     $Date_Report = date("Y-m-d") ;
     $Time_Report = date("H:i:s") ;
@@ -34,8 +35,8 @@ if(isset($_POST['report']) && $_POST['report'] != '' ){
         // echo $selecttitle;
 
         //insert to report
-        $sql_report = " INSERT INTO report( ID_User,Username, ID_Content,Title, Status_Report,Date_Report,Time_Report ) 
-                        VALUES ('$iduser','$selectusername','$idcontentreport','$selecttitle','$statusreport','$Date_Report','$Time_Report')" ;
+        $sql_report = " INSERT INTO report( ID_User,Username, ID_Content,Title,Statement, Status_Report,Date_Report,Time_Report ) 
+                        VALUES ('$iduser','$selectusername','$idcontentreport','$selecttitle','$statementrp','$statusreport','$Date_Report','$Time_Report')" ;
         
         $result_report = $link->query($sql_report);
 
