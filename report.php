@@ -15,8 +15,27 @@ if(isset($_POST['report']) && $_POST['report'] != '' ){
     $Date_Report = date("Y-m-d") ;
     $Time_Report = date("H:i:s") ;
 
-    $sql_report = " INSERT INTO report( ID_User, ID_Content, Status_Report,Date_Report,Time_Report ) 
-                    VALUES ('$iduser','$idcontentreport','$statusreport','$Date_Report','$Time_Report')" ;
+    //select username
+    $sql_selectusername = " SELECT Username FROM `user` WHERE ID_User = '$iduser'" ;
+        $result_selectusername = $link->query($sql_selectusername);
+
+    //select title
+    $sql_selecttitle = "SELECT Title FROM content WHERE ID_Content = '$idcontentreport'";
+        $result_selecttitle = $link->query($sql_selecttitle);
+
+    if($result_selectusername && $result_selecttitle){
+
+        $row_selectusername = $result_selectusername->fetch_assoc();
+        $selectusername = $row_selectusername['Username'];
+        // echo $selectusername;
+        
+        $row_selecttitle = $result_selecttitle->fetch_assoc();
+        $selecttitle = $row_selecttitle['Title'];
+        // echo $selecttitle;
+
+        //insert to report
+        $sql_report = " INSERT INTO report( ID_User,Username, ID_Content,Title, Status_Report,Date_Report,Time_Report ) 
+                        VALUES ('$iduser','$selectusername','$idcontentreport','$selecttitle','$statusreport','$Date_Report','$Time_Report')" ;
         
         $result_report = $link->query($sql_report);
 
@@ -25,6 +44,19 @@ if(isset($_POST['report']) && $_POST['report'] != '' ){
             else{
                 echo "result_report is false ".mysqli_error($link)."\n" ;
             }
+    }
+
+
+    // $sql_report = " INSERT INTO report( ID_User, ID_Content, Status_Report,Date_Report,Time_Report ) 
+    //                 VALUES ('$iduser','$idcontentreport','$statusreport','$Date_Report','$Time_Report')" ;
+        
+    //     $result_report = $link->query($sql_report);
+
+    //         if($result_report){
+    //             echo "result_report is true \n"; }
+    //         else{
+    //             echo "result_report is false ".mysqli_error($link)."\n" ;
+    //         }
 
         }
 

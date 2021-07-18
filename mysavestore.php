@@ -45,7 +45,9 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
                 $output_mysavestore[] = $row_mysavestore ;
                 $j_mysavestore = json_encode($output_mysavestore,JSON_NUMERIC_CHECK);
             }
+            // echo "$result_mysavestore->num_rows\n";
             echo "$j_mysavestore\n" ;
+            
         }
 
     }
