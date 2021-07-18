@@ -20,8 +20,8 @@ if(isset($_POST['ID_User']) && $_POST['ID_User'] != '') {
     $target_file = $destination_dir.$base_filename;
 
     if(!$_FILES["file"]["error"]){
-        
-        if(move_uploaded_file($_FILES["file"]["tmp_name"],$target_file)){
+        $moveFile = move_uploaded_file($_FILES["file"]["tmp_name"],$target_file);
+        if($moveFile){
             $response->status = true;
             $response->message = "File uploaded succcessfully";
 
@@ -38,7 +38,7 @@ if(isset($_POST['ID_User']) && $_POST['ID_User'] != '') {
                     }
         }else{
             $response->status = false;
-            $response->message = "File uploaded failed".$_FILES["file"]["error"];
+            $response->message = "File uploaded failed".$moveFile;
             
         }
     }
