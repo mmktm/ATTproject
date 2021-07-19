@@ -19,9 +19,12 @@ if(isset($_POST['ID_Content']) && $_POST['ID_Content'] != '' ){
                         `comment`.Comment,
                         `comment`.Date_Comment,
                         `comment`.Time_Comment 
-                        FROM 
+                    FROM 
                         `comment` JOIN `user` ON `comment`.ID_User = `user`.ID_User 
-                        WHERE `comment`.ID_Content = '$idcontentcomshow' && `comment`.Status_Comment = '1' " ;
+                    WHERE 
+                        `comment`.ID_Content = '$idcontentcomshow' && `comment`.Status_Comment = '1' 
+                    ORDER BY
+                        `comment`.Date_Comment DESC" ;
         
         $result_comshow = $link->query($sql_comshow);
         if($result_comshow->num_rows <=0 ){

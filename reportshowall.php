@@ -8,7 +8,9 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
 
 		$reportshowall = $_POST['reportshowall'];
         
-        $sql_reportshowall = " SELECT * FROM report " ;
+        $sql_reportshowall = " SELECT * FROM report 
+                                ORDER BY
+                                    report.Date_Report DESC" ;
 
         $result_reportshowall = $link->query($sql_reportshowall);
         if($result_reportshowall->num_rows <=0 ){

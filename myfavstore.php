@@ -37,7 +37,7 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
                             WHERE
                                 user.ID_User = $myfavstore AND favorite.Status_Fav = 1
                             ORDER BY
-                                favorite.Date_Fav DESC" ;
+                                favorite.Date_Fav DESC" ; 
 
         $result_myfavstore = $link->query($sql_myfavstore);
         if($result_myfavstore->num_rows <=0 ){
