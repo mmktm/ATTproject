@@ -4,9 +4,9 @@ header('content-type: application/json'); //ใช้ข้อมูลแบบ
 include 'connect.php'; //เชื่อมต่อDATABASE cloud
 
     //รับค่า ID_Content
-    if(isset($_POST['idctreport']) && $_POST['idctreport'] != '' ) {
+    if(isset($_GET['idctreport']) && $_GET['idctreport'] != '' ) {
 
-		$idctreport = $_POST['idctreport'];
+		$idctreport = $_GET['idctreport'];
         
         $sql_reportshow = " SELECT * FROM report WHERE ID_Content = '$idctreport'" ;
 

@@ -4,9 +4,9 @@ header('content-type: application/json'); //ใช้ข้อมูลแบบ
 include 'connect.php'; //เชื่อมต่อDATABASE cloud
 
     //กดตัวแปร reportshowall
-    if(isset($_POST['reportshowall'])) {
+    if(isset($_GET['reportshowall'])) {
 
-		$reportshowall = $_POST['reportshowall'];
+		$reportshowall = $_GET['reportshowall'];
         
         $sql_reportshowall = " SELECT * FROM report 
                                 ORDER BY
