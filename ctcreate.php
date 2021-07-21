@@ -10,7 +10,7 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
         $Date_Content = date("Y-m-d") ; //date
         $Time_Content = date("H:i:s") ; //time
         $Status_Content = 'Post'; //status
-        $ID_Userpost = $_POST['ID_Userpost']; //iduser
+        $ID_Userpost = $_POST['ID_Userpost']; //iduserpost
         $Title = $_POST['Title']; //title
         $Content = $_POST['Content'];//content
         $Link_VDO = $_POST['Link_VDO'];//link vdo
@@ -43,17 +43,28 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
         $ImagePath04 = 'uploadimages/'.$Images04;
         move_uploaded_file($tmp_name04,$ImagePath04);
         
+        //เพิ่มตรงนี้เก็บค่าชื่อ usernameauthor
+        $sql_author = " SELECT Username FROM `user` WHERE ID_User = '$ID_Userpost'";
+            $result_author = $link->query($sql_author);
+
+                if($result_author){
+                    $row_author = $result_author->fetch_assoc();
+                    $author = $row_author['Username'];
+                }else{
+                    echo "error uaername author";
+                }
+
         //input content
         $sql_content = " INSERT INTO content
-                          (Date_Content,Time_Content,Status_Content, Title, Content, Link_VDO, Location,
+                          (Date_Content,Time_Content,Status_Content,ID_Author,Author, Title, Content, Link_VDO, Location,
                            Counter_Read,Images01,Images02,Images03,Images04,Total_Fav,Total_Com,Total_Share,Total_Save)
                          VALUES
-                          ('$Date_Content','$Time_Content','$Status_Content', '$Title', '$Content', '$Link_VDO', '$Location',
+                          ('$Date_Content','$Time_Content','$Status_Content','$ID_Userpost','$author', '$Title', '$Content', '$Link_VDO', '$Location',
                            '$Counterread','$Images01','$Images02','$Images03','$Images04','$Totalfav','$Totalcom','$Totalshare','$Totalsave') " ;
 
             $result_content = $link->query($sql_content);
                 if($result_content){
-                    echo "result_content is success \n"; }
+                    echo "result_content is success"; }
                 else{
                     echo "result_content is false ".mysqli_error($link)."\n" ;
                 }
@@ -102,14 +113,14 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
 
             $result_datepost = $link->query($sql_datepost);
 
-        //เพิ่มตรงนี้เก็บค่าชื่อ usernameauthor
-        $sql_author = " SELECT
-                            Username 
-                        FROM
-                            `user` 
-                        WHERE
-                            ID_User = '$ID_Userpost'";
-            $result_author = $link->query($sql_author);
+        //เพิ่มตรงนี้เก็บค่าชื่อ usernameauthcor
+        // $sql_author = " SELECT
+        //                     Username 
+        //                 FROM
+        //                     `user` 
+        //                 WHERE
+        //                     ID_User = '$ID_Userpost'";
+        //     $result_author = $link->query($sql_author);
 
                 if($result_datepost && $result_author){
 
@@ -117,8 +128,9 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
                     $datepost = $row_datepost['Date_Content'];
                     $timepost = $row_datepost['Time_Content'];
                     // echo $datepost;
-                    $row_author = $result_author->fetch_assoc();
-                    $author = $row_author['Username'];
+
+                    // $row_author = $result_author->fetch_assoc();
+                    // $author = $row_author['Username'];
                     
 
                     //insert data to post
