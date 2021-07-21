@@ -8,7 +8,7 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
 
 		$reportshowall = $_GET['reportshowall'];
         
-        $sql_reportshowall = " SELECT * FROM report 
+        $sql_reportshowall = " SELECT * FROM report INNER JOIN content ON report.ID_Content = content.ID_Content 
                                 ORDER BY
                                     report.Date_Report DESC" ;
 

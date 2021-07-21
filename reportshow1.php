@@ -8,7 +8,10 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
 
 		$idctreport = $_GET['idctreport'];
         
-        $sql_reportshow = " SELECT * FROM report WHERE ID_Content = '$idctreport'" ;
+        // $sql_reportshow = " SELECT * FROM report WHERE ID_Content = '$idctreport'" ;
+        $sql_reportshow = " SELECT * FROM report 
+                                    INNER JOIN content ON report.ID_Content = content.ID_Content 
+                            WHERE report.ID_Content = '$idctreport'" ;
 
         $result_reportshow = $link->query($sql_reportshow);
         if($result_reportshow->num_rows <=0 ){
