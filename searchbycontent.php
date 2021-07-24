@@ -38,7 +38,7 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
                                             RIGHT JOIN post ON content.ID_Content = post.ID_Content )
                                             JOIN `user` ON post.ID_User = `user`.ID_User )
                                 WHERE 
-                                    post.Status_Post = 'Post' AND content.Title LIKE '%{$searchbycontent}%' " ;
+                                    content.Status_Content = 'posted' AND content.Title LIKE '%{$searchbycontent}%' " ;
 
         $result_searchbycontent = $link->query($sql_searchbycontent);
         if($result_searchbycontent->num_rows <=0 ){

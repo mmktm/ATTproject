@@ -8,7 +8,7 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
     $Username = $_POST['Username'];
     $Passwordd = $_POST['Passwordd'];
     $Email = $_POST['Email'];
-    $Status_User = 'Active';
+    $Status_User = 'active';
     $Date_User = date("Y-m-d") ;
     $Time_User = date("H:i:s") ;
 

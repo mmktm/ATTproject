@@ -65,7 +65,7 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
                                         content INNER JOIN con_in_cate ON content.ID_Content = con_in_cate.ID_Content
                                                 LEFT JOIN category ON con_in_cate.ID_Category = category.ID_Category
                                         WHERE
-                                            content.ID_Content = '$ID_Contentedit' && content.Status_Content = 'Post' " ;
+                                            content.ID_Content = '$ID_Contentedit' && content.Status_Content = 'posted' " ;
 
                         $result_slcontent = $link->query($sql_slcontent);
                             if($result_slcontent){
@@ -91,7 +91,7 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
                                             Images04 = '$Images04'
 
                                         WHERE
-                                            content.ID_Content = '$ID_Contentedit'  && content.Status_Content = 'Post' " ;
+                                            content.ID_Content = '$ID_Contentedit'  && content.Status_Content = 'posted' " ;
                 
                         $result_ctupdate = $link->query($sql_ctupdate);
 

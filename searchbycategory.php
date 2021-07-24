@@ -39,7 +39,7 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
                                             JOIN `user` ON post.ID_User = `user`.ID_User )
                                 WHERE
                                     con_in_cate.ID_Category = $searchbycategory
-                                    AND post.Status_Post = 'Post' " ;
+                                    AND content.Status_Content = 'posted' " ;
 
         $result_searchbycategory = $link->query($sql_searchbycategory);
         if($result_searchbycategory->num_rows <=0 ){

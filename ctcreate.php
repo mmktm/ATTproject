@@ -9,7 +9,7 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
         
         $Date_Content = date("Y-m-d") ; //date
         $Time_Content = date("H:i:s") ; //time
-        $Status_Content = 'Post'; //status
+        $Status_Content = 'posted'; //status
         $ID_Userpost = $_POST['ID_Userpost']; //iduserpost
         $Title = $_POST['Title']; //title
         $Content = $_POST['Content'];//content
@@ -76,16 +76,16 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
                             FROM
                                 content
                             WHERE
-                                Title = '$Title' && Status_Content = 'Post'
+                                Title = '$Title' && Status_Content = 'posted'
                                 -- Text_NameContent = 'เที่ยวแดนเหนือ'
                             ORDER BY
-                                ID_Content DESC 
+                                ID_Content DESC
                                 LIMIT 1" ;
 
             $result_idcontent = $link->query($sql_idcontent);
                 if($result_idcontent){
                     $row_idcontent = $result_idcontent->fetch_assoc();//assocเลือกค่าเดียว
-                    $idcontent = $row_idcontent['ID_Content'] ;//ค่า idcontent ที่ select ได้ use with sqldatepost
+                    $idcontent = $row_idcontent['ID_Content'];//ค่า idcontent ที่ select ได้ use with sqldatepost
                     // var_dump($idcontent);
                     // echo $idcontent ;
 
@@ -109,7 +109,7 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
                           FROM
                             content 
                           WHERE
-                            ID_Content = '$idcontent' && Status_Content = 'Post' " ;
+                            ID_Content = '$idcontent' && Status_Content = 'posted' " ;
 
             $result_datepost = $link->query($sql_datepost);
 

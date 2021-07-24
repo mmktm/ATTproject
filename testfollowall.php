@@ -1,7 +1,10 @@
+
 <?php 
 header("content-type:text/javascript;charset=utf-8"); //ภาษาไทย
 header('content-type: application/json'); //ใช้ข้อมูลแบบ json
 include 'connect.php'; //เชื่อมต่อDATABASE cloud
+
+//followalluser version old and bug[nodata = null]
 
 if(isset($_POST['followalluser'])) { // มีตัวแปร followalluser comein
 
@@ -39,25 +42,13 @@ if(isset($_POST['followalluser'])) { // มีตัวแปร followalluser c
         echo "No following and follower in ID_User $i\n" ;
     } else {
         while ($row_followalluser = $result_followalluser->fetch_assoc()){
-        // $output_followalluser[] = $row_followalluser ;
-        // $j_followalluser = json_encode($output_followalluser,JSON_NUMERIC_CHECK);
+        $output_followalluser[] = $row_followalluser ;
+        $j_followalluser = json_encode($output_followalluser,JSON_NUMERIC_CHECK);
         // $totalfav = $row_followalluser['fav'];
-
-        $follower = $row_followalluser['follower']; //data follower
-        $following = $row_followalluser['following'];
-
-            if( ($follower==null) or ($following==null) ){ //ถ้าfollower or following have null
-                        $follower = 0 ;
-                        $following = 0 ;
-                        $row_followalluser['follower'] = $follower ;
-                        $row_followalluser['following'] = $following ;
-            }
-                $output_followalluser[] = $row_followalluser ;
-                $j_followalluser = json_encode($output_followalluser,JSON_NUMERIC_CHECK);
+        }
         // echo json_encode($totalfav,JSON_NUMERIC_CHECK); //แค่ตัวเลข
         // echo $j_followalluser; //ติดloop 1 12 123
-        }
-    }//echo $j_followalluser; //ติด loop
+    }
 }echo $j_followalluser;
 }
 mysqli_close($link);

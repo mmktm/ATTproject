@@ -58,7 +58,7 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
                                      JOIN `user` ON post.ID_User = `user`.ID_User )
                                 WHERE
                                     con_in_cate.ID_Category = $rankbycategory 
-                                    AND post.Status_Post = 'Post'
+                                    AND content.Status_Content = 'posted'
                                 ORDER BY
 	                                content.Counter_Read DESC  
                                     LIMIT 10   " ;

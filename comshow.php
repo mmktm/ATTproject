@@ -18,11 +18,11 @@ if(isset($_POST['ID_Content']) && $_POST['ID_Content'] != '' ){
                         `user`.Image,
                         `comment`.Comment,
                         `comment`.Date_Comment,
-                        `comment`.Time_Comment 
+                        `comment`.Time_Comment
                     FROM 
-                        `comment` JOIN `user` ON `comment`.ID_User = `user`.ID_User 
+                        `comment` JOIN `user` ON `comment`.ID_User = `user`.ID_User
                     WHERE 
-                        `comment`.ID_Content = '$idcontentcomshow' && `comment`.Status_Comment = '1' 
+                        `comment`.ID_Content = '$idcontentcomshow' && `comment`.Status_Comment = 'available' 
                     ORDER BY
                         `comment`.Date_Comment DESC" ;
         

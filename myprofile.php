@@ -1,4 +1,3 @@
-
 <?php 
 header("content-type:text/javascript;charset=utf-8"); //ภาษาไทย
 header('content-type: application/json'); //ใช้ข้อมูลแบบ json
@@ -24,7 +23,7 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
                             JOIN `user` ON `user`.ID_User = $profile
                         WHERE
                             ( `follow`.ID_User = $profile OR follow.ID_Following = $profile ) 
-                            AND follow.Status_Follow = '1' " ;
+                            AND follow.Status_Follow = 'followed' " ;
 
             $result_profile = $link->query($sql_profile);
             if($result_profile->num_rows <=0 ){

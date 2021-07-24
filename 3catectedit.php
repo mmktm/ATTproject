@@ -52,7 +52,7 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
                                             LEFT JOIN category cate2 ON con_in_cate.ID_Category2 = cate2.ID_Category
                                             LEFT JOIN category cate3 ON con_in_cate.ID_Category3 = cate3.ID_Category
                                         WHERE
-                                            content.ID_Content = '$ID_Contentedit' && content.Status_Content = 'Post' " ;
+                                            content.ID_Content = '$ID_Contentedit' && content.Status_Content = 'posted' " ;
 
                         $result_slcontent = $link->query($sql_slcontent);
                             if($result_slcontent){
@@ -73,7 +73,7 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
                                             Link_VDO = '$Link_VDO',
                                             Location = '$Location'
                                         WHERE
-                                            content.ID_Content = '$ID_Contentedit'  && content.Status_Content = 'Post' " ;
+                                            content.ID_Content = '$ID_Contentedit'  && content.Status_Content = 'posted' " ;
                 
                         $result_ctupdate = $link->query($sql_ctupdate);
 

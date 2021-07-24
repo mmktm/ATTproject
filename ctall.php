@@ -37,7 +37,7 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
                                         JOIN `user` ON post.ID_User = `user`.ID_User )
                                         
                             WHERE
-                                post.Status_Post = 'Post' 
+                                content.Status_Content = 'posted'
                             ORDER BY
                                 content.ID_Content DESC " ; //เรียงจากctล่าสุด
 

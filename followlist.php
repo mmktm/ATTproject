@@ -22,7 +22,7 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
 
                                 FROM 
                                     follow JOIN `user` ON `user`.ID_User = follow.ID_User
-                                    WHERE follow.Status_Follow = '1' && `user`.Status_User = 'Active' && follow.ID_Following = '$iduser'" ;
+                                    WHERE follow.Status_Follow = 'followed' && `user`.Status_User = 'active' && follow.ID_Following = '$iduser'" ;
             
             $result_followerlist = $link->query($sql_followerlist);
                 if($result_followerlist->num_rows <=0 ){
@@ -54,7 +54,7 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
                                     `user`.Image
                             FROM 
                                 follow JOIN `user` ON `user`.ID_User = follow.ID_Following
-                                WHERE follow.Status_Follow = '1' && `user`.Status_User = 'Active' && follow.ID_User = '$iduser'" ;
+                                WHERE follow.Status_Follow = 'followed' && `user`.Status_User = 'active' && follow.ID_User = '$iduser'" ;
         
         $result_followinglist = $link->query($sql_followinglist);
             if($result_followinglist->num_rows <=0 ){

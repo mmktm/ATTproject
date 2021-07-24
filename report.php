@@ -12,7 +12,7 @@ if(isset($_POST['report']) && $_POST['report'] != '' ){
     $iduser = $_POST['iduser'] ; //รับตัวแปรชื่อ  $_POST['iduser'] เข้ามาเก็บไว้ใน $iduser
     $idcontentreport = $_POST['report'] ;
     $statementrp = $_POST['statement'] ;
-    $statusreport = '1';
+    $statusreport = 'reported';
     $Date_Report = date("Y-m-d") ;
     $Time_Report = date("H:i:s") ;
 

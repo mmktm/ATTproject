@@ -11,7 +11,7 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
 
                 $idusercomdel = $_POST['idusercomdel'];
                 $idcomdel = $_POST['idcomdel'] ;
-                $statuscomdel = '0';
+                $statuscomdel = 'unavailable';
 
                 //check ว่า iduser ตรงกับ idcomment?
                 $sql_checkcom = " SELECT * FROM `comment`
@@ -20,10 +20,10 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
                     
                 if ($result_checkcom->num_rows == '1') {
                     
-                    //update statuscomment 1 -> 0
+                    //update statuscomment available -> unavailable
                     $sql_comdel = " UPDATE `comment` 
                                     SET Status_Comment = '$statuscomdel'
-                                    WHERE ID_Comment = '$idcomdel' AND Status_Comment = '1' " ;   
+                                    WHERE ID_Comment = '$idcomdel' AND Status_Comment = 'available' " ;   
                         $result_comdel = $link->query($sql_comdel);
 
                         if($result_comdel == '1'){

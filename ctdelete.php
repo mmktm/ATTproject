@@ -27,7 +27,7 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
             if($checkpost == $ID_User ){
                 //update Status_Post in post table
                 $sql_updatestp = " UPDATE post 
-                                    SET Status_Post = 'Delete' 
+                                    SET Status_Post = 'deleted' 
                                     WHERE
                                         ID_Content = '$ID_Contentdl' " ;
 
@@ -40,7 +40,7 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
                 
                 //update Status_Post in content table
                 $sql_updatestct =  " UPDATE content 
-                                        SET Status_Content = 'Delete' 
+                                        SET Status_Content = 'deleted' 
                                         WHERE
                                             ID_Content = '$ID_Contentdl' " ;
 

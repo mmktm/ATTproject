@@ -9,17 +9,17 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
     if(isset($_POST['ID_Content']) && $_POST['ID_Content'] != '') {
         
         $ID_Content = $_POST['ID_Content']; //idcontent
-        $statusct = 'Hidden';
+        $statusct = 'hidden';
         
                     //Statuscontent edit (update)
-                    $sql_statusct = " UPDATE content SET Status_Content = '$statusct' WHERE ID_Content = '$ID_Content' && Status_Content = 'Post'" ;
+                    $sql_statusct = " UPDATE content SET Status_Content = '$statusct' WHERE ID_Content = '$ID_Content' && Status_Content = 'posted'" ;
                 
                         $result_statusct = $link->query($sql_statusct);
 
                             if($result_statusct){
-                                echo "post->hidden is success \n"; }
+                                echo "posted->hidden is success \n"; }
                             else{
-                                echo "post->hidden is false ".mysqli_error($link)."\n" ;
+                                echo "posted->hidden is false ".mysqli_error($link)."\n" ;
                             }
             }else{echo "error idcontent" ; }
     

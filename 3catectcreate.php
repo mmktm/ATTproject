@@ -9,7 +9,7 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
         
         $Date_Content = date("Y-m-d") ; //date
         $Time_Content = date("H:i:s") ; //time
-        $Status_Content = 'Post'; //status
+        $Status_Content = 'post'; //status
         $ID_Userpost = $_POST['ID_Userpost']; //iduser
         $Title = $_POST['Title']; //title
         $Content = $_POST['Content'];//content
@@ -62,7 +62,7 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
                             FROM
                                 content
                             WHERE
-                                Title = '$Title' && Status_Content = 'Post'
+                                Title = '$Title' && Status_Content = 'post'
                                 -- Text_NameContent = 'เที่ยวแดนเหนือ'
                             ORDER BY
                                 ID_Content DESC
@@ -95,7 +95,7 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
                           FROM
                             content 
                           WHERE
-                            ID_Content = '$idcontent' && Status_Content = 'Post' " ;
+                            ID_Content = '$idcontent' && Status_Content = 'posted' " ;
 
             $result_datepost = $link->query($sql_datepost);
                 if($result_datepost){

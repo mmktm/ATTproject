@@ -40,7 +40,7 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
                                     RIGHT JOIN post ON content.ID_Content = post.ID_Content )
                                     JOIN `user` ON post.ID_User = `user`.ID_User )
                             WHERE
-                                post.ID_User = $iduser && post.Status_Post = 'Post'
+                                post.ID_User = $iduser && content.Status_Content = 'posted'
                             ORDER BY
                                 content.ID_Content DESC" ;
 

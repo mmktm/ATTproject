@@ -14,7 +14,7 @@ if(isset($_POST['com']) && $_POST['com'] != '' ){ //รับค่าตัว�
     $idusercom = $_POST['idusercom'] ; //iduser ที่ comment
     $idcontentcom = $_POST['com'] ; //idcontent ที่ต้องการ comment
     $textcom = $_POST['textcom'] ;
-    $statuscom = '1';
+    $statuscom = 'available';
     $Date_Comment = date("Y-m-d") ;
     $Time_Comment = date("H:i:s") ;
 

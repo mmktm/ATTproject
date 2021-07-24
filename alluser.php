@@ -34,7 +34,7 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
                             JOIN `user` ON `user`.ID_User = $i
                         WHERE
                             (`follow`.ID_User = $i OR follow.ID_Following = $i)
-                            AND follow.Status_Follow = '1' " ;
+                            AND follow.Status_Follow = 'followed' " ;
 
             $result_alluser = $link->query($sql_alluser);
             if($result_alluser->num_rows <=0 ){

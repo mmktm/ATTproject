@@ -12,13 +12,14 @@ if(isset($_POST['fav']) && $_POST['fav'] != '' ){ //รับตัวแปร 
 
     $iduserfav = $_POST['iduserfav'] ; //รับตัวแปรชื่อ  $_POST['iduserfav'] เข้ามาเก็บไว้ใน $iduserfav
     $idcontentfav = $_POST['fav'] ; //idcontent ที่จะ fav
-    $statusfav = '1';
+    $statusfav = 'favorited';
     $Date_fav = date("Y-m-d") ;
     $Time_fav = date("H:i:s") ;
 
+    //check Status_Fav = 'favorited'?
     $sql_checkfav = " SELECT ID_User,ID_Content,Status_Fav 
                         FROM favorite 
-                        WHERE ID_User = '$iduserfav' && ID_Content = '$idcontentfav' && Status_Fav = '1'" ;
+                        WHERE ID_User = '$iduserfav' && ID_Content = '$idcontentfav' && Status_Fav = 'favorited'" ;
         
         $result_checkfav = $link->query($sql_checkfav);
         $row_checkfav = $result_checkfav->fetch_assoc();
@@ -38,11 +39,11 @@ if(isset($_POST['fav']) && $_POST['fav'] != '' ){ //รับตัวแปร 
         $totalfav = $row_totalfav['Total_Fav'];
         
        
-        if($checkfav == '1' ){
+        if($checkfav == 'favorited' ){
            
             //unfav
             $sql_unfav = " UPDATE favorite 
-                            SET Status_Fav = '0' 
+                            SET Status_Fav = 'unfavorite' 
                             WHERE ID_User = '$iduserfav' && ID_Content = '$idcontentfav'" ;
                 $result_unfav = $link->query($sql_unfav);
 

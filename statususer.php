@@ -11,8 +11,8 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
         //กดปุ่ม Block เข้ามา
         if(isset($_POST['Block'])){
 
-            //update status user Active -> Block
-            $sql_blockuser = "UPDATE `user` SET Status_User = 'Block' WHERE ID_User = '$ID_User'";
+            //update status user active -> inactive
+            $sql_blockuser = "UPDATE `user` SET Status_User = 'inactive' WHERE ID_User = '$ID_User'";
                 $result_blockuser = $link->query($sql_blockuser);
 
                 if($result_blockuser){
@@ -27,7 +27,7 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
             // if(isset($_POST['Active'])){
                 
                 //update status user Block -> Active
-                $sql_activeuser = "UPDATE `user` SET Status_User = 'Active' WHERE ID_User = '$ID_User'";
+                $sql_activeuser = "UPDATE `user` SET Status_User = 'active' WHERE ID_User = '$ID_User'";
                     $result_activeuser = $link->query($sql_activeuser);
 
                 if($result_activeuser){

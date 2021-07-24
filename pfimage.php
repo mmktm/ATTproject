@@ -30,7 +30,7 @@ if(isset($_POST['ID_User']) && $_POST['ID_User'] != '') {
 
                 //Profile edit (update)
                 $sql_pfedit = " UPDATE user SET Image = '$base_filename' 
-                                WHERE ID_User = '$ID_User' && Status_User = 'Active' " ;
+                                WHERE ID_User = '$ID_User' && Status_User = 'active' " ;
 
                     $result_pfedit = $link->query($sql_pfedit);
 

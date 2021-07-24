@@ -41,7 +41,7 @@ if(isset($_POST['ID_Content']) && $_POST['ID_Content'] != '' ){
                                 JOIN `user` ON post.ID_User = `user`.ID_User
                                 
                     WHERE
-                        content.ID_Content = '$idcontentshow' && post.Status_Post = 'Post' " ;
+                        content.ID_Content = '$idcontentshow' && content.Status_Content = 'posted' " ;
         
         $result_ctshow = $link->query($sql_ctshow);
         if($result_ctshow){

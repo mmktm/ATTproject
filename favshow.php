@@ -12,7 +12,7 @@ if(isset($_POST['ID_Content']) && $_POST['ID_Content'] != '' ){
 
     $sql_favshow = " SELECT COUNT(ID_User) AS fav 
                         FROM favorite 
-                        WHERE ID_Content = '$idcontentfav' && Status_Fav = '1'" ;
+                        WHERE ID_Content = '$idcontentfav' && Status_Fav = 'favorited'" ;
         
         $result_favshow = $link->query($sql_favshow);
             if($result_favshow){

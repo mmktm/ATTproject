@@ -4,12 +4,13 @@ header('content-type: application/json'); //ใช้ข้อมูลแบบ
 include 'connect.php'; //เชื่อมต่อDATABASE cloud
 
     //กดปุ่ม plus แสดงชื่อบทความทั้งหมด ยอดนับตาม status = post
+    //เอาทั้งหมด ทุกสถานะ
     if(isset($_GET['plus'])){
 
         $sql_allcate = " SELECT
                                 category.ID_Category,
                                 category.Category,
-                                SUM(CASE WHEN post.Status_Post = 'Post' THEN 1 ELSE 0 END ) AS Total
+                                SUM(CASE WHEN post.Status_Post = 'posted' THEN 1 ELSE 0 END ) AS Total
                                 -- COUNT( con_in_cate.ID_Content ) AS total
                          FROM
                                 category

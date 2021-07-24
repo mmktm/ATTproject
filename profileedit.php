@@ -24,7 +24,7 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
 
                 if($result_checkusername->num_rows <=0){
                     $sql_usernameedit = " UPDATE user SET Username = '$Usernameedit'
-                                            WHERE ID_User = '$ID_User' && Status_User = 'Active'";
+                                            WHERE ID_User = '$ID_User' && Status_User = 'active'";
                         $result_usernameedit = $link->query($sql_usernameedit);
                             if($result_usernameedit){
                                 echo "change username successfully \n"; }
@@ -53,7 +53,7 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
                 }else{
                     
                     $sql_emailedit = " UPDATE user SET Email = '$emailedit'
-                                        WHERE ID_User = '$ID_User' && Status_User = 'Active'";
+                                        WHERE ID_User = '$ID_User' && Status_User = 'active'";
                         $result_emailedit = $link->query($sql_emailedit);
                         if($result_emailedit){
                             echo "change email successfully\n";
@@ -66,7 +66,7 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
         if (isset($passwordedit)){
 
             $sql_passwordedit = " UPDATE user SET Passwordd = '$passwordedit'
-                                    WHERE ID_User = '$ID_User' && Status_User = 'Active'";
+                                    WHERE ID_User = '$ID_User' && Status_User = 'active'";
                 $result_passwordedit = $link->query($sql_passwordedit);
                     if($result_passwordedit){
                                 echo "change password successfully \n"; 
@@ -77,7 +77,7 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
         if(isset($Image)){
 
                 $sql_imageedit = " UPDATE user SET Image = '$Image'
-                                    WHERE ID_User = '$ID_User' && Status_User = 'Active' " ;
+                                    WHERE ID_User = '$ID_User' && Status_User = 'active' " ;
                     $result_imageedit = $link->query($sql_imageedit);
 
                             if($result_imageedit){
