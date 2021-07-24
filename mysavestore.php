@@ -33,7 +33,7 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
                                 LEFT JOIN con_in_cate ON content.ID_Content = con_in_cate.ID_Content
                                 LEFT JOIN category ON con_in_cate.ID_Category = category.ID_Category
                             WHERE
-                                user.ID_User = $mysavestore AND save.Status_Save = 1
+                                user.ID_User = $mysavestore AND save.Status_Save = 'saved'
                             ORDER BY
                                 save.Date_Save DESC" ;
 

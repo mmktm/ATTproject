@@ -23,7 +23,7 @@ if(isset($_POST['com']) && $_POST['com'] != '' ){ //รับค่าตัว�
                         ID_Content,
                         Total_Com 
                       FROM
-                        content 
+                        content
                       WHERE
                         ID_Content = '$idcontentcom' ";
 

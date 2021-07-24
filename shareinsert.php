@@ -11,7 +11,7 @@ if(isset($_POST['share']) && $_POST['share'] != '' ){ //รับค่า idcon
 
     $iduser = $_POST['iduser'] ; //iduser share
     $idcontentshare = $_POST['share'] ; //idcontent ที่จะ share
-    $statusshare = '1';
+    $statusshare = 'shared';
     $Date_Share = date("Y-m-d") ;
     $Time_Share = date("H:i:s") ;
 

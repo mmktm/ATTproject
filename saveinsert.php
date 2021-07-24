@@ -14,13 +14,13 @@ if(isset($_POST['save']) && $_POST['save'] != '' ){ //รับตัวแป�
 
     $idusersave = $_POST['idusersave'] ; //iduser save
     $idcontentsave = $_POST['save'] ; //idcontent ที่ต้องการจะ save
-    $statussave = '1'; //status 1 = save , 0 = unsave
+    $statussave = 'saved'; 
     $Date_save = date("Y-m-d") ;
     $Time_save = date("H:i:s") ;
 
     $sql_checksave = " SELECT ID_User,ID_Content,Status_Save 
                         FROM save
-                        WHERE ID_User = '$idusersave' && ID_Content = '$idcontentsave' && Status_Save = '1'" ;
+                        WHERE ID_User = '$idusersave' && ID_Content = '$idcontentsave' && Status_Save = 'saved'" ;
         
         $result_checksave = $link->query($sql_checksave);
         $row_checksave = $result_checksave->fetch_assoc();
@@ -40,11 +40,11 @@ if(isset($_POST['save']) && $_POST['save'] != '' ){ //รับตัวแป�
                         $totalsave = $row_totalsave['Total_Save'];
 
        
-        if($checksave == '1' ){ //เคย save ไว้หรือยัง? : 1 = save
+        if($checksave == 'saved' ){ //เคย save ไว้หรือยัง?
            
             //unsave
             $sql_unsave = " UPDATE save 
-                            SET Status_save = '0' 
+                            SET Status_Save = 'unsave' 
                             WHERE ID_User = '$idusersave' && ID_Content = '$idcontentsave'" ;
                 $result_unsave = $link->query($sql_unsave);
 
