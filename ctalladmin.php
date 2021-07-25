@@ -10,7 +10,7 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
                                 `user`.ID_User,
                                 `user`.Username,
                                 `user`.Image,
-                                post.Status_Post,
+                                content.Status_Content,
                                 content.ID_Content,
                                 content.Date_Content,
                                 content.Time_Content,
