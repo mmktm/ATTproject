@@ -15,6 +15,7 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
                                 `user`.Username,
                                 `user`.Image,
                                 post.Status_Post,
+                                report.Status_Report,
                                 content.ID_Content,
                                 content.Date_Content,
                                 content.Time_Content,
@@ -34,21 +35,27 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
                                 content.Total_Share
                                 
                             FROM
-                                (((( content
+                                ((((( content
                                     LEFT JOIN con_in_cate ON content.ID_Content = con_in_cate.ID_Content )
                                     LEFT JOIN category ON con_in_cate.ID_Category = category.ID_Category )
                                     RIGHT JOIN post ON content.ID_Content = post.ID_Content )
                                     JOIN `user` ON post.ID_User = `user`.ID_User )
+                                    LEFT JOIN report ON content.ID_Content = report.ID_Content)
                             WHERE
                                 post.ID_User = $iduser && content.Status_Content = 'posted'
                             ORDER BY
-                                content.ID_Content DESC" ;
+                                content.ID_Content DESC" ; //เรียงตาม idcontent
 
             $result_contentof = $link->query($sql_contentof);
             if($result_contentof->num_rows <=0 ){
                 echo json_encode("No Content Data");
             } else {
                 while ($row_contentof = $result_contentof->fetch_assoc()){
+                    $statusrp = $row_contentof['Status_Report'];
+                        if($statusrp == null){
+                            $statusrp = ' ' ;
+                            $row_contentof['Status_Report'] = $statusrp;
+                        }
                     $output_contentof[] = $row_contentof ;
                     $j_contentof = json_encode($output_contentof,JSON_NUMERIC_CHECK);
                 }
