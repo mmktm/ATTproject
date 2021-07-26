@@ -36,6 +36,7 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
                                 LEFT JOIN category ON con_in_cate.ID_Category = category.ID_Category
                             WHERE
                                 user.ID_User = $myfavstore AND favorite.Status_Fav = 'favorited'
+                                AND content.Status_Content = 'posted'
                             ORDER BY
                                 favorite.Date_Fav DESC" ; 
 

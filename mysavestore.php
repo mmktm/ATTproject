@@ -35,6 +35,7 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
                                 LEFT JOIN category ON con_in_cate.ID_Category = category.ID_Category
                             WHERE
                                 user.ID_User = $mysavestore AND save.Status_Save = 'saved'
+                                AND content.Status_Content = 'posted'
                             ORDER BY
                                 save.Date_Save DESC" ;
 
