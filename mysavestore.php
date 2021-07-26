@@ -10,12 +10,13 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
 		$mysavestore = $_GET['mysavestore'];
         
         $sql_mysavestore = " SELECT 
-                                `user`.ID_User,
-                                `user`.Username,
-                                save.Status_Save,
+                                -- `user`.ID_User,
+                                -- `user`.Username,
+                                save.Status_Save, 
                                 save.Date_Save,
                                 save.Time_Save,
                                 content.ID_Content,
+                                content.Author, /*ชื่อผู้เขียน*/
                                 content.Date_Content,
                                 content.Status_Content,
                                 content.Title,
