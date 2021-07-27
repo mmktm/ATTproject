@@ -15,6 +15,7 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
                                 `user`.Username,
                                 `user`.Image,
                                 post.Status_Post,
+                                content.Status_Content,
                                 report.Status_Report,
                                 content.ID_Content,
                                 content.Date_Content,
@@ -42,7 +43,7 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
                                     JOIN `user` ON post.ID_User = `user`.ID_User )
                                     LEFT JOIN report ON content.ID_Content = report.ID_Content)
                             WHERE
-                                post.ID_User = $iduser && content.Status_Content = 'posted'
+                                post.ID_User = $iduser && content.Status_Content != 'deleted'
                             ORDER BY
                                 content.ID_Content DESC" ; //เรียงตาม idcontent
 
