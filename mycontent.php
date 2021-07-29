@@ -17,6 +17,7 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
                                 post.Status_Post,
                                 content.Status_Content,
                                 report.Status_Report,
+                                report.Statement,
                                 content.ID_Content,
                                 content.Date_Content,
                                 content.Time_Content,
