@@ -12,7 +12,8 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
         $Title = $_POST['Title'];//namecontent
         $Content = $_POST['Content'];//text
         $Link_VDO = $_POST['Link_VDO'];//link vdo
-        $Location = $_POST['Location'];//link map
+        $Latitude = $_POST['Latitude'];
+        $Longitude = $_POST['Longitude'];
         $ID_Category = $_POST['ID_Category'];//idcategory
 
         //input image
@@ -55,7 +56,8 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
                                             content.Title,
                                             content.Content,
                                             content.Link_VDO,
-                                            content.Location,
+                                            content.Latitude,
+                                            content.Longitude,
                                             content.Images01,
                                             content.Images02,
                                             content.Images03,
@@ -84,7 +86,8 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
                                             Title = '$Title',
                                             Content = '$Content',
                                             Link_VDO = '$Link_VDO',
-                                            Location = '$Location',
+                                            Latitude = '$Latitude',
+                                            Longitude = '$Longitude',
                                             Images01 = '$Images01',
                                             Images02 = '$Images02',
                                             Images03 = '$Images03',

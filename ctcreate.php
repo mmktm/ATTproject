@@ -14,7 +14,8 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
         $Title = $_POST['Title']; //title
         $Content = $_POST['Content'];//content
         $Link_VDO = $_POST['Link_VDO'];//link vdo
-        $Location = $_POST['Location'];//link map
+        $Latitude = $_POST['Latitude'];
+        $Longitude = $_POST['Longitude'];
         $Counterread = "0"; //default read = 0
         $Totalfav = "0"; //default = 0
         $Totalcom = "0"; //default = 0
@@ -56,10 +57,10 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
 
         //input content
         $sql_content = " INSERT INTO content
-                          (Date_Content,Time_Content,Status_Content,ID_Author,Author, Title, Content, Link_VDO, Location,
+                          (Date_Content,Time_Content,Status_Content,ID_Author,Author, Title, Content, Link_VDO, Latitude, Longitude,
                            Counter_Read,Images01,Images02,Images03,Images04,Total_Fav,Total_Com,Total_Share,Total_Save)
                          VALUES
-                          ('$Date_Content','$Time_Content','$Status_Content','$ID_Userpost','$author', '$Title', '$Content', '$Link_VDO', '$Location',
+                          ('$Date_Content','$Time_Content','$Status_Content','$ID_Userpost','$author', '$Title', '$Content', '$Link_VDO', '$Latitude','$Longitude',
                            '$Counterread','$Images01','$Images02','$Images03','$Images04','$Totalfav','$Totalcom','$Totalshare','$Totalsave') " ;
 
             $result_content = $link->query($sql_content);
