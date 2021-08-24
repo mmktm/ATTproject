@@ -10,7 +10,10 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
         $sql_totalctbyuser = "  SELECT 
                                     `user`.ID_User,
 				                    `user`.Username,
-				                    COUNT(content.ID_Content) AS total
+				                    COUNT(content.ID_Content) AS totalcontent,
+                                    SUM( CASE WHEN content.Status_Content = 'posted' THEN 1 ELSE 0 END ) AS totalpost,
+                                    SUM( CASE WHEN content.Status_Content = 'deleted' THEN 1 ELSE 0 END ) AS totaldelete,
+                                    SUM( CASE WHEN content.Status_Content = 'hidden' THEN 1 ELSE 0 END ) AS totalreport
                                 FROM
 		                            `user`
                             		LEFT JOIN content ON `user`.ID_User = content.ID_Author
