@@ -7,7 +7,7 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
     //total นับทั้งหมด ทุกสถานะ
     if(isset($_GET['plus'])){
 
-        $sql_totalctbyuser = " SELECT 
+        $sql_totalctbyuser = "  SELECT 
                                     `user`.ID_User,
 				                    `user`.Username,
 				                    COUNT(content.ID_Content) AS total

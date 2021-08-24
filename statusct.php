@@ -9,10 +9,14 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
     if(isset($_POST['ID_Content']) && $_POST['ID_Content'] != '') {
         
         $ID_Content = $_POST['ID_Content']; //idcontent
+        $Cause = $_POST['Cause']; //เหตุผลที่โดนรายงาน
         $statusct = 'hidden';
         
                     //Statuscontent edit (update)
-                    $sql_statusct = " UPDATE content SET Status_Content = '$statusct' WHERE ID_Content = '$ID_Content' && Status_Content = 'posted'" ;
+                    $sql_statusct = " UPDATE content 
+                                      SET Status_Content = '$statusct',
+                                          Cause = '$Cause' 
+                                      WHERE ID_Content = '$ID_Content' && Status_Content = 'posted'" ;
                 
                         $result_statusct = $link->query($sql_statusct);
 
