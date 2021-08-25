@@ -5,7 +5,12 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
 
     //กดปุ่ม plus แสดงจำนวนบทความของแต่ละ user โดยไม่กรองสถานะบทความ
     //total นับทั้งหมด ทุกสถานะ
-    if(isset($_GET['plus'])){
+    // if(isset($_GET['plus'])){
+
+    //ถ้ามีตัวแปร iduser รับค่า ID_User เข้ามาและ ไม่ใช่ค่าว่าง
+    if(isset($_GET['iduser']) && $_GET['iduser'] != ''){
+        //รับค่า ID_User
+		$iduser = $_GET['iduser'];
 
         $sql_totalctbyuser = "  SELECT 
                                     `user`.ID_User,
@@ -17,6 +22,8 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
                                 FROM
 		                            `user`
                             		LEFT JOIN content ON `user`.ID_User = content.ID_Author
+                                WHERE
+                                    user.ID_User = $iduser
                                 GROUP BY
 		                            `user`.ID_User" ;
 
