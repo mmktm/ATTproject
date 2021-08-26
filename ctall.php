@@ -11,7 +11,7 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
                                 `user`.Username,
                                 `user`.Image,
                                 content.Status_Content,
-                                report.Status_Report,
+                                -- report.Status_Report,
                                 content.ID_Content,
                                 content.Date_Content,
                                 content.Time_Content,
@@ -32,12 +32,12 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
                                 content.Total_Share
 
                             FROM
-                                ((((( content
+                                (((( content
                                         LEFT JOIN con_in_cate ON content.ID_Content = con_in_cate.ID_Content )
                                         LEFT JOIN category ON con_in_cate.ID_Category = category.ID_Category )
                                         RIGHT JOIN post ON content.ID_Content = post.ID_Content )
                                         JOIN `user` ON post.ID_User = `user`.ID_User )
-                                        LEFT JOIN report ON content.ID_Content = report.ID_Content)
+                                        -- LEFT JOIN report ON content.ID_Content = report.ID_Content)
                                         
                             WHERE
                                 content.Status_Content = 'posted'
