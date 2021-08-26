@@ -55,10 +55,40 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
                     }
                     $output_alluser[] = $row_alluser ;
                     $j_alluser = json_encode($output_alluser,JSON_NUMERIC_CHECK);
+                    // echo "$j_alluser\n";
                 }
             }
-        }
-        echo "$j_alluser\n" ; //นอกลูป
-    }
+
+        $sql_totalctbyuser = "  SELECT 
+                                    `user`.ID_User,
+				                    `user`.Username,
+				                    COUNT(content.ID_Content) AS totalcontent,
+                                    SUM( CASE WHEN content.Status_Content = 'posted' THEN 1 ELSE 0 END ) AS totalpost,
+                                    SUM( CASE WHEN content.Status_Content = 'deleted' THEN 1 ELSE 0 END ) AS totaldelete,
+                                    SUM( CASE WHEN content.Status_Content = 'hidden' THEN 1 ELSE 0 END ) AS totalreport
+                                FROM
+		                            `user`
+                            		LEFT JOIN content ON `user`.ID_User = content.ID_Author
+                                WHERE
+                                    user.ID_User = $i
+                                GROUP BY
+		                            `user`.ID_User" ;
+
+            $result_totalctbyuser = $link->query($sql_totalctbyuser);
+            if($result_totalctbyuser->num_rows <=0 ){
+                echo "error" ;
+            } else {
+                while ($row_totalctbyuser = $result_totalctbyuser->fetch_assoc()){
+                    $output_totalctbyuser[] = $row_totalctbyuser ;
+                    $j_totalctbyuser = json_encode($output_totalctbyuser,JSON_NUMERIC_CHECK);
+                }
+            }
+            // echo "$j_alluser\n" ; //นอกลูป
+            // echo "$j_totalctbyuser\n" ;     
+        
+    }//loop for
+    echo "$j_alluser\n" ; //นอกลูป
+    echo "$j_totalctbyuser\n" ;
+}//get
     mysqli_close($link);
 ?> 
