@@ -11,13 +11,13 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
         
         //contentof เรียงลำดับจากid บทความ ล่าสุด
         $sql_contentof = " SELECT
-                                `user`.ID_User,
-                                `user`.Username,
-                                `user`.Image,
+                                user.ID_User,
+                                user.Username,
+                                user.Image,
                                 post.Status_Post,
                                 content.Status_Content,
-                                report.Status_Report,
-                                report.Statement,
+--                                 report.Status_Report,
+--                                 report.Statement,
                                 content.ID_Content,
                                 content.Date_Content,
                                 content.Time_Content,
@@ -35,19 +35,30 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
                                 content.Total_Fav,
                                 content.Total_Com,
                                 content.Total_Save,
-                                content.Total_Share
-                                
+                                content.Total_Share,
+                                report.ID_Report,
+                                report.Statement,
+                                report.Status_Report
                             FROM
-                                ((((( content
-                                    LEFT JOIN con_in_cate ON content.ID_Content = con_in_cate.ID_Content )
-                                    LEFT JOIN category ON con_in_cate.ID_Category = category.ID_Category )
-                                    RIGHT JOIN post ON content.ID_Content = post.ID_Content )
-                                    JOIN `user` ON post.ID_User = `user`.ID_User )
-                                    LEFT JOIN report ON content.ID_Content = report.ID_Content)
+                                content
+                                    LEFT JOIN con_in_cate ON content.ID_Content = con_in_cate.ID_Content 
+                                    LEFT JOIN category ON con_in_cate.ID_Category = category.ID_Category 
+                                    RIGHT JOIN post ON content.ID_Content = post.ID_Content 
+                                    JOIN user ON post.ID_User = user.ID_User 
+                                    LEFT JOIN (
+	                                	SELECT
+	                                		MAX(ID_Report) AS ID_Report,
+	                                		ID_Content
+	                                	FROM
+	                                		report
+	                                	GROUP BY
+	                                		ID_Content
+	                                ) AS max_Report ON content.ID_Content = max_Report.ID_Content
+	                                LEFT JOIN report ON max_Report.ID_Report = report.ID_Report
                             WHERE
                                 post.ID_User = $iduser && content.Status_Content != 'deleted'
                             ORDER BY
-                                content.ID_Content DESC " ; //เรียงตาม idcontent
+                                content.ID_Content DESC" ; //เรียงตาม idcontent
 
             $result_contentof = $link->query($sql_contentof);
             if($result_contentof->num_rows <=0 ){
