@@ -27,7 +27,7 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
 
             $result_checkregis = $link->query($sql_checkregis);
 
-            if($result_checkregis->num_rows == 1 ){
+            if($result_checkregis->num_rows > 0 ){
                 // echo json_encode("error : username or email already exists"); 
                 echo json_encode("error"); 
 
