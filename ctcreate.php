@@ -77,7 +77,7 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
                             FROM
                                 content
                             WHERE
-                                Title = '$Title' && Status_Content = 'posted'
+                                Title = '$Title'
                                 -- Text_NameContent = 'เที่ยวแดนเหนือ'
                             ORDER BY
                                 ID_Content DESC
@@ -110,7 +110,7 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
                           FROM
                             content 
                           WHERE
-                            ID_Content = '$idcontent' && Status_Content = 'posted' " ;
+                            ID_Content = '$idcontent' " ;
 
             $result_datepost = $link->query($sql_datepost);
 
