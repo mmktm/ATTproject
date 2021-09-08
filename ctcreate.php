@@ -44,6 +44,10 @@ include 'connect.php'; //เชื่อมต่อDATABASE cloud
         $ImagePath04 = 'uploadimages/'.$Images04;
         move_uploaded_file($tmp_name04,$ImagePath04);
         
+        if($Link_VDO == null ){
+            $Link_VDO = "link" ;
+
+        }
         //เพิ่มตรงนี้เก็บค่าชื่อ usernameauthor
         $sql_author = " SELECT Username FROM `user` WHERE ID_User = '$ID_Userpost'";
             $result_author = $link->query($sql_author);
